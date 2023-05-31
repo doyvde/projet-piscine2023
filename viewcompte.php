@@ -106,13 +106,16 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
           enchereEnCours($_SESSION['Id'],$_SESSION['Type']);
         ?>
       </div>
-      
+      <br>
+      <br>
       <div class=container>
         <h4 style="font-weight:bold;color:black">Vos Negociations en cours</h4>
         <hr>
         <?php include'traitement/AffichageNego.php';
         affichageNego($_SESSION['Id'],$_SESSION['Type']); ?>
         <hr>
+        <br>
+        <br>
         <h4 style="font-weight:bold;color:black">Votre Historique d'achats</h4>
         <hr>
         <?php include'traitement/Achat.php';
@@ -148,6 +151,58 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
           <script language="javascript"> alert("Vous avez refusé la négociation, cette négociation n'apparaitra plus chez le client"); </script>
           FOOBAR;
         }?>
+      </div>
+      <br>
+      <br>
+      <div class="container align-content-center">
+        <?php $result = isset($_GET["result"])? $_GET["result"] : "";
+
+        if($result==1){
+          echo <<< FOOBAR
+          <script language="javascript"> alert("Votre vente a été enregistré"); </script>
+          FOOBAR;
+        }
+        ?>
+
+        <div class="container">
+        
+          <?php
+          if($_SESSION['Type']=="Vendeur"){
+          $error=isset($_GET["error"])? $_GET["error"] : "";
+          if($error==1)
+          echo '<div class="title mb-2" style="color:red;font-size:200%"> Vente Invalide </div>';
+          else if($error==2)
+          echo '<div class="title mb-2" style="color:red;font-size:200%"> Type de photo invalide </div>';
+          else echo '<h3 style="font-weight:bold;color:black"> Utilisez le formulaire pour ajouter une vente </h3>';
+          } 
+          ?>
+
+            <?php include'traitement/Vendre.php';
+            affichageVendre($_SESSION['Type'],$_SESSION['Id']); ?>
+
+        </div>
+
+      </div>
+      <br>
+      <br>
+      <div class="container">
+        <?php
+        $error=isset($_GET["error"])? $_GET["error"] : "";
+        $result=isset($_GET["result"])? $_GET["result"] : "";
+        if($result==1){
+          echo <<< FOOBAR
+          <script language="javascript"> alert("Le vendeur a été rajouté dans la liste de vendeur."); </script>
+          FOOBAR;
+        }
+        if($error==1)
+
+          echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Un ou plusieurs champs sont vides, veuillez remplir tous les champs. </div>';
+        elseif($error ==2)   echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Pas de rajout à la base. </div>';
+        elseif($error ==3) echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Photo de Profil invalide. </div>';
+
+        ?>
+        <?php include'traitement/Admin.php';
+        affichageAdmin($_SESSION['Type'],$_SESSION['Id']); ?>
       </div>
 </body>
     <footer class="site-footer mt-auto" style="clear:both;height:150px;bottom:0px;width:100%; padding: 50px">

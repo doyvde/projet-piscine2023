@@ -3,43 +3,41 @@
 
 <head>
 	<meta charset=utf-8>
-	<title>Ecebay</title>
+	<title>Drive Deal</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
+
 <body>
 	<div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container mt-5">
+						<img src="systeme/logo3.png" class="brand_logo" alt="Logo" width="275">
+					</div>
 				</div>
 
 				<?php
-				$error=isset($_GET["error"])? $_GET["error"] : "";
-				if($error==1)
+				$error = isset($_GET["error"]) ? $_GET["error"] : "";
+				if ($error == 1)
 
 					echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Un ou plusieurs champs sont vides, veuillez remplir tous les champs. </div>';
-				elseif($error ==2)   echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Pas de rajout à la base. </div>';
-				elseif($error ==3) echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Photo de Profil invalide. </div>';
+				elseif ($error == 2)   echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Pas de rajout à la base. </div>';
+				elseif ($error == 3) echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Photo de Profil invalide. </div>';
 				else echo '<div class="title mt-5 mb-3 justify-content-center"> Veuillez remplir tous les champs pour procéder à votre inscription <br> Revenenz a la page précédente en cliquant <a href="viewAdmin.php">  ici</a>. </div>    ';
 				?>
 				<div class="d-flex justify-content-center form_container">
-					<form action="traitementInscriptionVendeur.php" method="post" enctype="multipart/form-data">
-
-						<h4 style="font-weight:bold;color:black">Votre Identité</h4>
-
+					<form action="traitement/InscriptionVendeur.php" method="post" enctype="multipart/form-data">
+						<h4 class="mb-3" style="font-weight:bold;color:black">L'identité du vendeur</h4>
 						<div class="input-group mb-3">
-							<input type="text" name="nom" class="form-control" placeholder="Nom" > 	<input type="text" name="prenom" class="form-control " placeholder="Prénom" >
+							<input type="text" name="nom" class="form-control" placeholder="Nom"> <input type="text" name="prenom" class="form-control " placeholder="Prénom">
 						</div>
-
 						<div class="input-group mb-3">
 							<input type="tel" name="telephone" class="form-control " placeholder="Numéro de téléphone"> <input type="email" name="email" class="form-control" placeholder="Adresse email">
 						</div>
-
-						<hr>
-
-						<select  class="form-control ml-2 " name="pays" title="Pays">
-
+						<label for="pays"> Pays du Vendeur : </label>
+						<select id=pays class="form-control-sm " name="pays" title="Pays">
 							<option value="France">France </option>
 							<option value="Afghanistan">Afghanistan </option>
 							<option value="Afrique_Centrale">Afrique_Centrale </option>
@@ -270,41 +268,30 @@
 							<option value="Zambie">Zambie </option>
 							<option value="Zimbabwe">Zimbabwe </option>
 						</select>
-
-					</div>
-
-					<br>
-					<tr>
-						<td>Photo de Profil</td>
-						<td><input type="file" name="image"></td>
-					</tr>
-					<br>
-
-					<hr>
-
-
-
-
-					<h4 style="font-weight:bold;color:black">Votre Identifiant de connexion</h4>
-
-					<div class="input-group mb-3">
-						<input type="text" name="identifiant" class="form-control" placeholder="Identifiant" >
-					</div>
-
-					<div class="input-group mb-3">
-						<input type="password" name="mdp" class="form-control" placeholder="Mot de passe">
-					</div>
-
-					<hr>
-					<div class="input-group ">
-						<input type="submit" class="btn btn-outline-dark text-uppercase" value="Créer un compte Vendeur">
-					</div>
-					<hr>
-				</form>
+						<br>
+						<hr>
+						<h4 class="mb-3" style="font-weight:bold;color:black">La Photo de profil du vendeur</h4>
+						<div class="input-group mb-3">
+							<input type="file" name="image" id="image"></tr>
+						</div>
+						<hr>
+						<h4 class="mb-3" style="font-weight:bold;color:black">L'Identifiant de connexion du vendeur</h4>
+						<div class="input-group mb-3">
+							<input type="text" name="identifiant" class="form-control" placeholder="Identifiant">
+						</div>
+						<div class="input-group mb-3">
+							<input type="password" name="mdp" class="form-control" placeholder="Mot de passe">
+						</div>
+						<hr>
+						<div class="input-group ">
+							<input type="submit" class="btn btn-outline-dark text-uppercase" value="Créer un compte Vendeur">
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-</div>
+	</div>
 </body>
+
 </html>

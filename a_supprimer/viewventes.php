@@ -6,7 +6,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
 }
 ?>
 <!doctype html>
-<html >
+<html lang="en">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -15,10 +15,9 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link href="styles1.css" rel="stylesheet" type="text/css">
-
   <title>Ebay Ece</title>
 </head>
-<body >
+<body style="  min-height: 100%;">
   <nav class="navbar navbar-expand-lg navbar-light align-items-end"  style="font-size:130%;font-weight:bold">
     <a class="navbar-brand" href="viewAccueil.php"> <img src="logo5.png"  alt=""></a>
     <ul class="navbar-nav mr-auto">
@@ -33,7 +32,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
           <a class="dropdown-item" href="vip.php">Accesoires VIP</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="tout.php">Voir tous les articles</a>
-          </div>
+        </div>
       </li>
 
     </ul>
@@ -60,43 +59,54 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
       </li>
       <li class="nav-item">
         <a class="nav-link" style="color:black" href="traitementLogout.php">
-           <img src="logout.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        </a>
-      </li>
+         <img src="logout.png" width="30" height="30" class="d-inline-block align-top" alt="">
+       </a>
+     </li>
 
+   </ul>
+ </nav>
 
-    </ul>
-  </nav>
-
-  <section class="jumbotron text-center" style="background-image:url(admin.jpg);" >
-    <div class="container">
-      <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">ADMIN</h1>
-
-    </div>
-  </section>
+ <section class="jumbotron text-center" style="background-image:url(ventes1.jpg)" >
   <div class="container">
-    <?php
-    $error=isset($_GET["error"])? $_GET["error"] : "";
-    $result=isset($_GET["result"])? $_GET["result"] : "";
-    if($result==1){
-      echo <<< FOOBAR
-      <script language="javascript"> alert("Le vendeur a été rajouté dans la liste de vendeur."); </script>
-      FOOBAR;
-    }
-    if($error==1)
+    <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">VENTES</h1>
 
-      echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Un ou plusieurs champs sont vides, veuillez remplir tous les champs. </div>';
-    elseif($error ==2)   echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Pas de rajout à la base. </div>';
-    elseif($error ==3) echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Photo de Profil invalide. </div>';
+  </div>
+</section>
 
-    ?>
-  <?php include'traitementAdmin.php';
-  affichageAdmin($_SESSION['Type'],$_SESSION['Id']); ?>
+<div class="container align-content-center">
 
+  <?php $result = isset($_GET["result"])? $_GET["result"] : "";
+
+  if($result==1){
+    echo <<< FOOBAR
+    <script language="javascript"> alert("Votre vente a été enregistré"); </script>
+    FOOBAR;
+  }
+  ?>
+
+ <div class="container">
+   
+  <?php
+  if($_SESSION['Type']=="Vendeur"){
+  $error=isset($_GET["error"])? $_GET["error"] : "";
+  if($error==1)
+  echo '<div class="title mb-2" style="color:red;font-size:200%"> Vente Invalide </div>';
+  else if($error==2)
+  echo '<div class="title mb-2" style="color:red;font-size:200%"> Type de photo invalide </div>';
+  else echo '<h3 style="font-weight:bold;color:black"> Utilisez le formulaire pour ajouter une vente </h3>';
+  } 
+  ?>
+
+    <?php include'traitement/Vendre.php';
+    affichageVendre($_SESSION['Type'],$_SESSION['Id']); ?>
+
+
+
+  </div>
 </div>
 </body>
 
-<footer class="site-footer mt-auto" style="clear:both;height:150px;bottom:0px;position:relative;;width:100%">
+<footer class="site-footer mt-auto" style="clear:both;height:150px;bottom:0px;width:100%">
   <hr>
   
   <div class="container mt-2">
@@ -132,6 +142,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
   </div>
 
 </footer>
+
 <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 <script id="rendered-js"> </script>

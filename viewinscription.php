@@ -3,7 +3,7 @@
 
 <head>
   <meta charset=utf-8>
-  <title>Ecebay</title>
+  <title>Drive Deal</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -13,7 +13,7 @@
       <div class="user_card">
         <div class="d-flex justify-content-center">
           <div class="brand_logo_container mt-5">
-            <img src="ECEBAY.png" class="brand_logo" alt="Logo">
+            <img src="systeme/logo3.png" class="brand_logo" alt="Logo" width="275">
           </div>
         </div>
         
@@ -26,7 +26,7 @@
         else echo '<div class="title mt-5 mb-3 justify-content-center"> Veuillez remplir tous les champs pour procéder à votre inscription <br> Si vous possédez déjà un compte, connectez-vous en cliquant <a href="index.php">  ici</a>. </div>    ';
         ?>
         <div class="d-flex justify-content-center form_container">
-          <form action="traitementInscription.php" method="post">
+          <form action="traitement/Inscription.php" method="post">
 
             <h4 style="font-weight:bold;color:black">Votre Identité</h4>
 
@@ -285,9 +285,12 @@
             </div>
 
             <hr>
+            <h4 class="mb-3" style="font-weight:bold;color:black">Votre Photo de profil</h4>
+            <div class="input-group mb-3">
+              <input type="file" name="image"></tr>
+            </div>
 
-
-
+            <hr>
 
             <h4 style="font-weight:bold;color:black">Votre Identifiant de connexion</h4>
 
