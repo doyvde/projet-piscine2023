@@ -80,7 +80,7 @@ function afficherVendeur($data){
   </div>
   <div class="min-gap ml-auto"></div>
   <div class="label-group">
-  <form action="traitementSuppressionVendeur.php?idvendeur={$data['IdVendeur']}" method="post">
+  <form action="traitement/SuppressionVendeur.php?idvendeur={$data['IdVendeur']}" method="post">
   <input type="submit" class="btn btn-outline-danger text-uppercase" value="Supprimer le vendeur ">
   </form>
   </div>
@@ -122,8 +122,8 @@ function afficherClient($data){
   </div>
   <div class="min-gap ml-auto"></div>
   <div class="label-group">
-  <form action="traitementSuppressionVendeur.php?idvendeur={$data['IdClient']}" method="post">
-  <input type="submit" class="btn btn-outline-danger text-uppercase" value="Supprimer le vendeur ">
+  <form action="traitement/SuppressionClient.php?idvendeur={$data['IdClient']}" method="post">
+  <input type="submit" class="btn btn-outline-danger text-uppercase" value="Supprimer le client ">
   </form>
   </div>
   </div>
