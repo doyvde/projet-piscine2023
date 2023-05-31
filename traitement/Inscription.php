@@ -1,6 +1,19 @@
 <?php
 //include 'connexion_bdd.php';
 
+function importer(){
+	if(isset($_FILES["image"])){ 
+		$dossier = "../PhotoProfil/";
+		$fichier = basename($_FILES['image']['name']);
+		$photo = $dossier.$fichier;
+		move_uploaded_file($_FILES['image']['tmp_name'], $photo);
+	}else{
+		header('Location: http://localhost/projet-piscine2023/viewInscription.php?error=3');
+		exit;
+	}
+}
+
+
 function inscrireClient ($nom,$prenom,$tel,$email,$adresse,$ville,$codePostal,$pays,$identifiant,$mdp,$typeCarte,$nomCarte,$numCarte,$dateExpi,$codeSecu,$porteMonnaie,$image){
 
   //$database = "ebayece";
@@ -35,34 +48,7 @@ $numCarte = isset($_POST["numcarte"])? $_POST["numcarte"] : "";
 $dateExpi = isset($_POST["dateExpi"])? $_POST["dateExpi"] : "";
 $codeSecu = isset($_POST["crypto"])? $_POST["crypto"] : "";
 $porteMonnaie = isset($_POST["portemonnaie"])? $_POST["portemonnaie"] : "";
-
-if(isset($_FILES['image'])){
-  $errors = array();
-  $file_name = $_FILES['image']['name'];
-  $file_size = $_FILES['image']['size'];
-  $file_tmp = $_FILES['image']['tmp_name'];
-  $file_type = $_FILES['image']['type'];
-  $file_ext = strtolower(end(explode('.', $_FILES['image']['name'])));
-
-  $extensions = array("jpeg", "jpg", "png");
-
-  if (in_array($file_ext, $extensions) === false) {
-      $errors[] = "Extension not allowed, please choose a JPEG or PNG file.";
-  }
-
-  if ($file_size > 2097152) {
-      $errors[] = 'File size must be less than 2 MB';
-  }
-
-  if (empty($errors) == true) {
-      move_uploaded_file($file_tmp, "../PhotoProfil/" . $file_name);
-      echo "Image uploaded successfully.";
-  } else {
-      print_r($errors);
-  }
-}
-
-$image=$file_name;//" isset($_POST["image"])? $_POST["image"] : "";
+$image="PhotoProfil/".basename($_FILES['image']['name']);
 
 if($nom=="" || $prenom=="" || $tel=="" || $email=="" || $adresse=="" || $ville=="" || $codePostal=="" || $pays=="" || $identifiant=="" ||
 $mdp=="" || $typeCarte=="" || $nomCarte=="" || $numCarte=="" || $dateExpi==""||$codeSecu==""||$porteMonnaie==""||$image==""){
@@ -73,6 +59,7 @@ $mdp=="" || $typeCarte=="" || $nomCarte=="" || $numCarte=="" || $dateExpi==""||$
 }
 else{
   inscrireClient ($nom,$prenom,$tel,$email,$adresse,$ville,$codePostal,$pays,$identifiant,$mdp,$typeCarte,$nomCarte,$numCarte,$dateExpi,$codeSecu,$porteMonnaie,$image);
+  importer();
   header('Location: http://localhost/projet-piscine2023/index.php?error=2');
   exit;
 }

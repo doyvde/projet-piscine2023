@@ -25,10 +25,10 @@
 					echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Un ou plusieurs champs sont vides, veuillez remplir tous les champs. </div>';
 				elseif ($error == 2)   echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Pas de rajout à la base. </div>';
 				elseif ($error == 3) echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Photo de Profil invalide. </div>';
-				else echo '<div class="title mt-5 mb-3 justify-content-center"> Veuillez remplir tous les champs pour procéder à votre inscription <br> Revenenz a la page précédente en cliquant <a href="viewAdmin.php">  ici</a>. </div>    ';
+				else echo '<div class="title mt-5 mb-3 justify-content-center"> Veuillez remplir tous les champs pour procéder à votre inscription <br> Si vous possédez déjà un compte, connectez-vous en cliquant <a href="index.php">  ici</a>. <br> Ou revenenz a la page précédente en cliquant <a href="type.html">  ici</a>. </div>    ';
 				?>
 				<div class="d-flex justify-content-center form_container">
-					<form action="traitement/InscriptionVendeur.php" method="post" enctype="multipart/form-data">
+					<form action="InscriptionVendeur.php" method="post" enctype="multipart/form-data">
 						<h4 class="mb-3" style="font-weight:bold;color:black">L'identité du vendeur</h4>
 						<div class="input-group mb-3">
 							<input type="text" name="nom" class="form-control" placeholder="Nom"> <input type="text" name="prenom" class="form-control " placeholder="Prénom">

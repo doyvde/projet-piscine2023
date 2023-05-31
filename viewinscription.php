@@ -23,10 +23,11 @@
 
           echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Un ou plusieurs champs sont vides, veuillez remplir tous les champs. </div>';
           elseif($error ==2)   echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Pas de rajout à la base. </div>';
-        else echo '<div class="title mt-5 mb-3 justify-content-center"> Veuillez remplir tous les champs pour procéder à votre inscription <br> Si vous possédez déjà un compte, connectez-vous en cliquant <a href="index.php">  ici</a>. </div>    ';
+          elseif ($error == 3) echo '<div class="title mt-5 mb-2 justify-content-center" style="color:red"> Photo de Profil invalide. </div>';
+        else echo '<div class="title mt-5 mb-3 justify-content-center"> Veuillez remplir tous les champs pour procéder à votre inscription <br> Si vous possédez déjà un compte, connectez-vous en cliquant <a href="index.php">  ici</a>. <br>Ou revenenz a la page précédente en cliquant <a href="type.html">  ici</a></div>    ';
         ?>
         <div class="d-flex justify-content-center form_container">
-          <form action="traitement/Inscription.php" method="post">
+          <form action="traitement/Inscription.php" method="post" enctype="multipart/form-data">
 
             <h4 style="font-weight:bold;color:black">Votre Identité</h4>
 

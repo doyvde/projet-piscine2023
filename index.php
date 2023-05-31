@@ -12,7 +12,7 @@
 
 
 
-<body style=" background-image: url(systeme/fondlogin.jpg);background-repeat: no-repeat;background-size: cover;background-color: black;width:100%;height:100%" >
+<body style=" background-image: url(systeme/fondlogin1.jpg);background-repeat: no-repeat;background-size: cover;background-color: black;width:100%;height:100%" >
 
 
 	<div class="container align-content-center ">
@@ -20,7 +20,7 @@
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
 					<div class="brand_logo_container mt-5">
-						<img src="systeme/logo3.png" class="brand_logo" alt="Logo" width="275">
+						<img src="systeme/logo4.png" class="brand_logo" alt="Logo" width="275">
 					</div>
 					
 				</div>
@@ -75,7 +75,7 @@
 
 					<div class="mt-4">
 						<div class="d-flex justify-content-center links" style="padding-top: 85%;">
-							Vous n'avez pas de compte? <a href="viewInscription.php" class="ml-2" style="color:yellow">Créer un compte</a>
+							Vous n'avez pas de compte? <a href="type.html" class="ml-2" style="color:red">Créer un compte</a>
 						</div>
 					</div>
 

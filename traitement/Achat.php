@@ -3,9 +3,13 @@
 function affichageAchat($type, $id){
 
 	if($type == "Vendeur" || $type == "Admin"){
-			echo "Vous etes sous le statut $type, cette section est reservée aux acheteurs";
+			
 			return;
 	}
+	echo <<< FOOBAR
+	<h4 style="font-weight:bold;color:black">Votre Historique d'achats</h4>
+	<hr>
+	FOOBAR;
 	//identifier votre BDD
 	//$database = "ebayece";
 

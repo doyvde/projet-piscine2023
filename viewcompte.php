@@ -88,8 +88,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
       <br>
       <br>
       <div class=container>
-        <h4 style="font-weight:bold;color:black">Vos Articles à Payer</h4>
-        <hr>
+        
 
         <?php
           include 'traitement/AffichageAPayer.php';
@@ -99,8 +98,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
         <br>
         <br>
 
-        <h4 style="font-weight:bold;color:black">Vos Encheres en cours</h4>
-        <hr>
+        
 
         <?php
           enchereEnCours($_SESSION['Id'],$_SESSION['Type']);
@@ -109,15 +107,13 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
       <br>
       <br>
       <div class=container>
-        <h4 style="font-weight:bold;color:black">Vos Negociations en cours</h4>
-        <hr>
+        
         <?php include'traitement/AffichageNego.php';
         affichageNego($_SESSION['Id'],$_SESSION['Type']); ?>
-        <hr>
+        
         <br>
         <br>
-        <h4 style="font-weight:bold;color:black">Votre Historique d'achats</h4>
-        <hr>
+        
         <?php include'traitement/Achat.php';
         affichageAchat($_SESSION['Type'],$_SESSION['Id']); ?>
 

@@ -24,6 +24,20 @@ function affichageAdmin($type, $id){
       while($data = mysqli_fetch_assoc($resultVendeur)){
         afficherVendeur($data);
       }
+
+    echo "<br><br>";
+
+    $sqlClient = "SELECT * FROM client";
+    $resultClient = mysqli_query($db_handle, $sqlClient);
+    if (mysqli_num_rows($resultClient) == 0) {
+      //le livre recherché n'existe pas
+      echo "Aucun Client";
+    }else {
+      echo "<h3>Liste des Clients</h3><hr>";
+      while($data = mysqli_fetch_assoc($resultClient)){
+        afficherClient($data);
+      }
+    }
     }
 
   }else {
@@ -75,6 +89,49 @@ function afficherVendeur($data){
 
   FOOBAR;
 }
+
+function afficherClient($data){
+
+  echo <<< FOOBAR
+  <div class="border-card">
+  <img src="{$data['Photo']}"class="img-thumbnail" width=100px height=100px>
+  <div class="content-wrapper">
+  <div class="label-group fixed">
+  <p class="caption ml-5">Nom </p>
+  <p class="title ml-5">{$data['Nom']}</p>
+  </div>
+  <div class="min-gap"></div>
+  <div class="label-group">
+  <p class="caption">Prenom</p>
+  <p class="title">{$data['Prenom']}</p>
+  </div>
+  <div class="min-gap"></div>
+  <div class="label-group">
+  <p class="caption">Pays</p>
+  <p class="title">{$data['Pays']}</p>
+  </div>
+  <div class="min-gap"></div>
+  <div class="label-group">
+  <p class="caption">Téléphone</p>
+  <p class="title">{$data['Telephone']}</p>
+  </div>
+  <div class="min-gap"></div>
+  <div class="label-group">
+  <p class="caption">Email</p>
+  <p class="title">{$data['E-mail']}</p>
+  </div>
+  <div class="min-gap ml-auto"></div>
+  <div class="label-group">
+  <form action="traitementSuppressionVendeur.php?idvendeur={$data['IdClient']}" method="post">
+  <input type="submit" class="btn btn-outline-danger text-uppercase" value="Supprimer le vendeur ">
+  </form>
+  </div>
+  </div>
+  </div>
+
+  FOOBAR;
+}
+
 
 function afficheFormulaireVendeur (){
   echo <<< FOOBAR

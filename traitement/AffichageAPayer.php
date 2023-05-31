@@ -2,6 +2,7 @@
 //include 'connexion_bdd.php';
 
 function aPayer($id, $type){
+	
 	//identifier votre BDD
 	//$database = "ebayece";
 	
@@ -10,6 +11,9 @@ function aPayer($id, $type){
 	
 	if ($db_found) {
 		if($type == 'Client'){
+			echo '
+	<h4 style="font-weight:bold;color:black">Vos Articles à Payer</h4>
+    <hr>';
 			traitementAffichageClient($id,$db_handle);
 			
 		}
@@ -29,6 +33,8 @@ function enchereEnCours($id, $type){
 	
 	if ($db_found) {
 		if($type == 'Client'){
+			echo '<h4 style="font-weight:bold;color:black">Vos Encheres en cours</h4>
+        <hr>';
 			traitementAffichageEnchere($id,$db_handle);
 			
 		}

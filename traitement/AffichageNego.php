@@ -9,15 +9,21 @@ function affichageNego($id, $type){
 	list($db_found,$db_handle)=include 'connexion_bdd.php';
 
 	if ($db_found) {
-		if($type == 'Admin')
-		echo "Vous n'avez pas de nego vous etes admin";
+		if($type == 'Admin'){
+
+		}
 		//on regarde si le client a deja fait une nego si oui on quitte
 		//si non on cree la nego
 		elseif($type == 'Vendeur'){
+			echo'<h4 style="font-weight:bold;color:black">Vos Negociations en cours</h4>
+        <hr>';
 			traitementAffichageVendeur($id,$db_handle);
 
 		}elseif($type == 'Client'){
+			echo'<h4 style="font-weight:bold;color:black">Vos Negociations en cours</h4>
+        <hr>';
 			traitementsAffichageClient($id,$db_handle);
+			echo'<hr>';
 
 		}
 	}else {
