@@ -131,7 +131,7 @@ if ($_SESSION['Type'] == "" || $_SESSION['Id'] == "") {
 
     </div>
   </section>
-  <div class="card"  style="width: 18rem">
+ <!-- <div class="card"  style="width: 18rem">
     <img src="" class="card-img-top" width="50%">
     <div class="card-body" ">
 	<div class=" label-group fixed">
@@ -160,7 +160,7 @@ if ($_SESSION['Type'] == "" || $_SESSION['Id'] == "") {
     <br>
     <a href="viewproduit.php" class="btn btn-outline-danger align-self-center"> Voir l'Annonce </a>
   </div>
-  </div>
+  </div>*/-->
   <div class="container py-5">
 
     <div class="row">
