@@ -39,7 +39,7 @@ $identifiant= isset($_POST["identifiant"])? $_POST["identifiant"] : "";
 $mdp = isset($_POST["mdp"])? $_POST["mdp"] : "";
 $image="PhotoProfil/".basename($_FILES['image']['name']);
 
-if($nom=="" || $prenom =="" || $tel=="" || $email=="" || $pays=="" || $identifiant=="" || $mdp==""){
+if($nom=="" || $prenom =="" || $tel=="" || $email=="" || $pays=="" || $identifiant=="" || $mdp==""|| $mdp=="PhotoProfil/"){
 	header('Location: http://localhost/projet-piscine2023/viewInscriptionVendeur.php?error=1');
 	exit;
 

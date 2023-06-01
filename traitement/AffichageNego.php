@@ -137,7 +137,7 @@ function affichageNegoCoteVendeur($dataNego,$dataVenteAssocie,$aQuiLeTour)
 		</div>
 		<div class="min-gap"></div>
 		<div class="label-group">
-		<form action="traitementNegocier.php?idvente={$dataNego['IdVente']}&IdClient={$dataNego['IdClient']}" method="post">
+		<form action="traitement/Negocier.php?idvente={$dataNego['IdVente']}&IdClient={$dataNego['IdClient']}" method="post">
 		<div class="input-group mb-3 ">
 		<input type="number" name="prix" class="form-control input_user " placeholder="Entrer ici un prix" >
 		</div>
@@ -145,12 +145,12 @@ function affichageNegoCoteVendeur($dataNego,$dataVenteAssocie,$aQuiLeTour)
 		<input type="submit" class="btn btn-outline-dark text-uppercase" value="Negocier">
 		</div>
 		</form>
-		<form action="traitementValiderNegoVendeur.php?idvente={$dataNego['IdVente']}&IdClient={$dataNego['IdClient']}" method="post">
+		<form action="traitement/ValiderNegoVendeur.php?idvente={$dataNego['IdVente']}&IdClient={$dataNego['IdClient']}" method="post">
 		<div class="d-flex  mt-3 login_container">
 		<input type="submit" class="btn btn-outline-success text-uppercase" value="Accepter l'offre ">
 		</div>
 		</form>
-		<form action="traitementRefuserNego.php?idvente={$dataNego['IdVente']}&IdClient={$dataNego['IdClient']}" method="post">
+		<form action="traitement/RefuserNego.php?idvente={$dataNego['IdVente']}&IdClient={$dataNego['IdClient']}" method="post">
 		<div class="d-flex  mt-3 login_container">
 		<input type="submit" class="btn btn-outline-danger text-uppercase" value="Refuser l'offre ">
 		</div>
@@ -251,7 +251,7 @@ function affichageNegoCoteClient($dataNego,$dataVenteAssocie,$aQuiLeTour){
 		</div>
 		<div class="min-gap"></div>
 		<div class="label-group">
-		<form action="traitementNegocier.php?idvente={$dataNego['IdVente']}&IdClient={$dataNego['IdClient']}" method="post">
+		<form action="traitement/Negocier.php?idvente={$dataNego['IdVente']}&IdClient={$dataNego['IdClient']}" method="post">
 		<div class="input-group mb-3 ">
 		<input type="number" name="prix" class="form-control input_user " placeholder="Entrer ici un prix" >
 		</div>
@@ -264,7 +264,7 @@ function affichageNegoCoteClient($dataNego,$dataVenteAssocie,$aQuiLeTour){
 		<input type="submit" class="btn btn-outline-success text-uppercase" value="Accepter l'offre en cours">
 		</div>
 		</form>
-		<form action="paiementNego.php?idvente={$dataNego['IdVente']}&IdClient={$dataNego['IdClient']}" method="post">
+		<form action="traitement/RefuserNegoClient.php?idvente={$dataNego['IdVente']}&IdClient={$dataNego['IdClient']}" method="post">
 		<div class="d-flex  mt-3 login_container">
 		<input type="submit" class="btn btn-outline-danger text-uppercase" value="Refuser l'offre en cours">
 		</div>

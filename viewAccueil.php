@@ -130,9 +130,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
   </section>
   
   <div class=container>
-    <h4 style="font-weight:bold;color:black">Vos Articles à Payer</h4>
-
-  <hr>
+    
   <?php
 
         include 'traitement/AffichageAPayer.php';
@@ -141,9 +139,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
   
   <br>
   <br>
-  <h4 style="font-weight:bold;color:black">Vos Encheres en cours</h4>
-
-  <hr>
+  
     <?php
 
       enchereEnCours($_SESSION['Id'],$_SESSION['Type']);

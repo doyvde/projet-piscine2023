@@ -149,7 +149,7 @@ function affichageVenteClient($dataVente,$db_handle){
 	<span class="currency">EUR €</span><span class="num">{$dataVente['PrixAchatImmediat']} </span>
 	</span>
 	</p>
-	<a href="traitementAjoutPanier.php?idvente={$dataVente['IdVente']}" class="btn btn-lg btn-outline-dark text-uppercase"> <i class="fas fa-shopping-cart"></i> Ajouter au panier </a> <a href="paiementImmediat.php?idvente={$dataVente['IdVente']}" class="btn btn-lg btn-outline-danger text-uppercase"> <i class="fas fa-shopping-cart"></i> Achat Immediat</a>
+	<a href="traitement/AjoutPanier.php?idvente={$dataVente['IdVente']}" class="btn btn-lg btn-outline-dark text-uppercase"> <i class="fas fa-shopping-cart"></i> Ajouter au panier </a> <a href="paiementImmediat.php?idvente={$dataVente['IdVente']}" class="btn btn-lg btn-outline-danger text-uppercase"> <i class="fas fa-shopping-cart"></i> Achat Immediat</a>
 	FOOBAR;
 
 	if($dataVente['TypeVente']=="Enchere")
@@ -191,7 +191,7 @@ function affichageVenteClient($dataVente,$db_handle){
 		}
 		echo <<< FOOBAR
 		</p>
-		<form action="traitementAjoutEnchere.php?idvente={$dataVente['IdVente']}" method="post">
+		<form action="traitement/AjoutEnchere.php?idvente={$dataVente['IdVente']}" method="post">
 		<div class="input-group mb-3">
 		<input type="number" name="prix" class="form-control input_user" placeholder="Entrer ici votre prix" >
 		</div>
@@ -203,7 +203,7 @@ function affichageVenteClient($dataVente,$db_handle){
 		<dl class="param param-feature">
 		<dt>Auto-Enchère Maximale</dt>
 		</dl>
-		<form action="traitementAjoutAutoEnchere.php?idvente={$dataVente['IdVente']}" method="post">
+		<form action="traitement/AjoutAutoEnchere.php?idvente={$dataVente['IdVente']}" method="post">
 		<div class="input-group mb-3">
 		<input type="number" name="prix" class="form-control input_user" placeholder="Entrer ici votre prix maximal pour l'auto-enchère" >
 		</div>
@@ -251,7 +251,7 @@ function affichageVenteClient($dataVente,$db_handle){
 		if (mysqli_num_rows($resultnego) == 0)
 		{
 			echo <<< FOOBAR
-			<form action="traitementNouvelleNego.php?idvente={$dataVente['IdVente']}" method="post">
+			<form action="traitement/NouvelleNego.php?idvente={$dataVente['IdVente']}" method="post">
 			<div class="input-group mb-3">
 			<input type="number" name="prix" class="form-control input_user" placeholder="Entrez ici votre prix" >
 			</div>
@@ -268,7 +268,7 @@ function affichageVenteClient($dataVente,$db_handle){
 		}else {
 			echo <<< FOOBAR
 			<dl class="param param-feature">
-			<dd>Vous avez déjà entamé une négociation pour cet objet, veuillez consulter l'onglet Achats / Négociations en cliquant <a href="viewachats.php"> ici </a> </dd>
+			<dd>Vous avez déjà entamé une négociation pour cet objet, veuillez consulter l'onglet Mon compte en cliquant <a href="viewcompte.php"> ici </a> </dd>
 			</dl>
 			</article>
 			</aside>

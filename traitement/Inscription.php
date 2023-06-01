@@ -51,7 +51,7 @@ $porteMonnaie = isset($_POST["portemonnaie"])? $_POST["portemonnaie"] : "";
 $image="PhotoProfil/".basename($_FILES['image']['name']);
 
 if($nom=="" || $prenom=="" || $tel=="" || $email=="" || $adresse=="" || $ville=="" || $codePostal=="" || $pays=="" || $identifiant=="" ||
-$mdp=="" || $typeCarte=="" || $nomCarte=="" || $numCarte=="" || $dateExpi==""||$codeSecu==""||$porteMonnaie==""||$image==""){
+$mdp=="" || $typeCarte=="" || $nomCarte=="" || $numCarte=="" || $dateExpi==""||$codeSecu==""||$porteMonnaie==""||$image=="PhotoProfil/"){
 
   header('Location: http://localhost/projet-piscine2023/viewInscription.php?error=1');
   exit;

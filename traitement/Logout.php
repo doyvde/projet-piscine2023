@@ -1,4 +1,5 @@
 <?php
+session_reset();
 session_start();
 $_SESSION['Type']="";
 $_SESSION['Id']="";

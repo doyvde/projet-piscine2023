@@ -14,14 +14,14 @@
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
 					<div class="brand_logo_container mt-5">
-						<img src="ECEBAY.png" class="brand_logo" alt="Logo">
+						<img src="systeme/logo3.png" class="brand_logo" alt="Logo" width="275">
 					</div>
 				</div>
 				<br>
 				<br>
 				<div class="d-flex justify-content-center form_container">
 
-					<form  action="traitementAchatImmediat.php?idvente=<?php echo $_GET['idvente']; ?>" method="post">
+					<form  action="traitement/AchatImmediat.php?idvente=<?php echo $_GET['idvente']; ?>" method="post">
 						<?php
 						$error=isset($_GET["error"])? $_GET["error"] : "";
 						if($error==1)

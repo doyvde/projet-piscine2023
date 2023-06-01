@@ -192,6 +192,11 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
           echo <<< FOOBAR
           <script language="javascript"> alert("Vous avez refusé la négociation, cette négociation n'apparaitra plus chez le client"); </script>
           FOOBAR;
+        }
+        if($result==7){
+          echo <<< FOOBAR
+          <script language="javascript"> alert("Vous avez refusé la négociation, cette négociation n'apparaitra plus chez le vendeur"); </script>
+          FOOBAR;
         }?>
       </div>
       <br>

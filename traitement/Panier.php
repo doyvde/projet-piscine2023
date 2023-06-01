@@ -146,7 +146,7 @@ function afficheVente($data,$db_handle){
 	<td> </td>
 	<td class="col-sm-1 col-md-1 text-center"><strong>{$data['PrixAchatImmediat']} € </strong></td>
 	<td class="col-sm-1 col-md-1">
-	<a href="traitementSuppressionPanier.php?idvente={$data['IdVente']}" style="text-decoration:none">
+	<a href="traitement/SuppressionPanier.php?idvente={$data['IdVente']}" style="text-decoration:none">
 	<button type="button" class="btn btn-outline-danger">
 	<span class="glyphicon glyphicon-remove"></span> Supprimer cet article
 	</button>
