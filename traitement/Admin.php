@@ -135,7 +135,7 @@ function afficherClient($data){
 
 function afficheFormulaireVendeur (){
   echo <<< FOOBAR
-  <form action="traitement/InscriptionVendeur.php" method="post" enctype="multipart/form-data">
+  <form action="InscriptionVendeur.php" method="post" enctype="multipart/form-data">
   <h4 class="mb-3" style="font-weight:bold;color:black">L'identité du vendeur</h4>
   <div class="input-group mb-3">
   <input type="text" name="nom" class="form-control" placeholder="Nom" > 	<input type="text" name="prenom" class="form-control " placeholder="Prénom" >

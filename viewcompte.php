@@ -232,9 +232,20 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
         if($_SESSION['Type']=="Admin"){
         $error=isset($_GET["error"])? $_GET["error"] : "";
         $result=isset($_GET["result"])? $_GET["result"] : "";
+        $supress=isset($_GET["supress"])? $_GET["supress"] : "";
         if($result==1){
           echo <<< FOOBAR
           <script language="javascript"> alert("Le vendeur a été rajouté dans la liste de vendeur."); </script>
+          FOOBAR;
+        }
+        if($supress==1){
+          echo <<< FOOBAR
+          <script language="javascript"> alert("Le vendeur a été supprimer de la liste des vendeurs."); </script>
+          FOOBAR;
+        }
+        if($supress==2){
+          echo <<< FOOBAR
+          <script language="javascript"> alert("Le client a été supprimer de la liste des clients."); </script>
           FOOBAR;
         }
         if($error==1)

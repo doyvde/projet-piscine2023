@@ -10,7 +10,7 @@ function suppressionClient($idClient){
 	list($db_found,$db_handle)=include 'connexion_bdd.php';
 
 	if ($db_found) {
-		$sqlVente ="SELECT * FROM Vente Where idClient = $idClient;";
+		$sqlVente ="SELECT * FROM client Where IdClient = $idClient;";
 		$resultVente = mysqli_query($db_handle, $sqlVente);
 		while($dataVente= mysqli_fetch_assoc($resultVente)){
 			suppressionVenteClient($dataVente,$db_handle);
@@ -26,23 +26,18 @@ function suppressionClient($idClient){
 
 
 function suppressionVenteClient($dataVente,$db_handle){
-	$idVente = $dataVente['IdVente'];
-	if($dataVente['TypeVente']=='Negociation'){
-		$sqlDeleteNego="UPDATE negociation SET IdClient = NULL WHERE IdVente = $idVente";
-		mysqli_query($db_handle, $sqlDeleteNego);
-	}elseif($dataVente['TypeVente']=='Enchere'){
-		$sqlDeleteAutoEnchere="UPDATE AutoEnchere SET IdClient = NULL WHERE IdVente = $idVente";
-		mysqli_query($db_handle, $sqlDeleteAutoEnchere);
-		$sqlDeleteEnchere="UPDATE Enchere SET IdClient = NULL WHERE IdVente = $idVente";
-		mysqli_query($db_handle, $sqlDeleteEnchere);
-	}
-	$sqlDeleteEnchere="UPDATE vente SET IdClient = NULL WHERE IdVente = $idVente";
+	$idVente = $dataVente['IdClient'];
+	$sqlDeleteNego="DELETE FROM negociation WHERE IdClient = $idVente";
+	mysqli_query($db_handle, $sqlDeleteNego);
+	$sqlDeleteAutoEnchere="DELETE FROM AutoEnchere  WHERE IdClient = $idVente";
+	mysqli_query($db_handle, $sqlDeleteAutoEnchere);
+	$sqlDeleteEnchere="DELETE FROM Enchere  WHERE IdClient = $idVente";
 	mysqli_query($db_handle, $sqlDeleteEnchere);
-    $sqlDeleteEnchere="DELETE FROM historique WHERE IdVente = $idVente";
+    $sqlDeleteEnchere="DELETE FROM historique WHERE IdClient = $idVente";
 	mysqli_query($db_handle, $sqlDeleteEnchere);
 }
 
-suppressionVendeur($_GET['idvendeur']);
-header('Location: viewAdmin.php?supress=1');
+suppressionClient($_GET['idvendeur']);
+header('Location: http://localhost/projet-piscine2023/viewcompte.php?supress=2');
 exit;
 ?>

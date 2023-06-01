@@ -60,7 +60,7 @@ function affichageVenteAdmin($dataVente){
 	<dd>{$dataVente['TypeVente']} ou Vente directe</dd>
 	</dl>
 	<hr>
-	<a href="traitementSuppressionVente.php?idvente={$dataVente['IdVente']}" class="btn btn-lg btn-outline-danger text-uppercase"> <i class="fas fa-shopping-cart"></i> Supprimer cet article </a>
+	<a href="traitement/SuppressionVente.php?idvente={$dataVente['IdVente']}" class="btn btn-lg btn-outline-danger text-uppercase"> <i class="fas fa-shopping-cart"></i> Supprimer cet article </a>
 	</article>
 	</aside>
 	</div>

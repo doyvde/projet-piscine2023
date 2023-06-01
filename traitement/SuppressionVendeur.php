@@ -41,6 +41,6 @@ function suppressionVente($dataVente,$db_handle){
 }
 
 suppressionVendeur($_GET['idvendeur']);
-header('Location: viewAdmin.php?supress=1');
+header('Location: http://localhost/projet-piscine2023/viewcompte.php?supress=1');
 exit;
 ?>
