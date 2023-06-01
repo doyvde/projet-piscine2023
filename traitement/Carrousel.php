@@ -13,14 +13,14 @@ function affichageCarou($id){
                         <div class="row">
                             <div class="col-6">
                                 
-                                <h3 class="mb-3" style="font-weight:bold;color:black">Produits Populaires:</h3>
+                                <h3 class="mb-3" style="font-weight:bold;color:black">Offre du Moment:</h3>
 	                            <hr>
                             </div>
                             <div class="col-6 text-right">
-                                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                                <a class="btn btn-danger mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
                                     Prec
                                 </a>
-                                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                                <a class="btn btn-danger mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
                                     Suiv
                                 </a>
                             </div>
@@ -38,8 +38,13 @@ FOOBAR;
     $i=1;
 	list($db_found,$db_handle)=include 'connexion_bdd.php';
 	if ($db_found) {
-		$sqlClient = "SELECT * FROM vente ;";
+		$sqlClient = "SELECT *
+        FROM vente
+        ORDER BY ABS(DATEDIFF(DateFin, CURDATE()))
+        LIMIT 6;";
+
 		$resultClient = mysqli_query($db_handle, $sqlClient);
+        $l=mysqli_num_rows($resultClient);
 		if (mysqli_num_rows($resultClient) == 0) {
 			//le livre recherché n'existe pas
 			echo "Aucun Articles";
@@ -57,9 +62,9 @@ FOOBAR;
                                 
 
                             </div>
-                        </div>
+                        </div>';if($i != $l+1 ){echo'
                         <div class="carousel-item">
-                            <div class="row">';}
+                            <div class="row">';}}
                     else{
                            echo'  <div class="col-md-4 mb-3">';
                                     
@@ -119,6 +124,7 @@ function afficheHistoClient($data){
 	<p class="caption">Prix d'Achat Immediat</p>
 	<p class="title">{$data['PrixAchatImmediat']}€</p>
 	</div>
+    <br>
     <a href="viewproduit.php?id={$data['IdVente']}" class="btn btn-outline-danger align-self-center" > Voir l'Annonce </a>
 </div>
 </div>

@@ -39,7 +39,7 @@ function vente($idVendeur,$nom,$description,$categorie,$prixDepart,$prixAchatImm
 	
 	
 
-	if($nom=="" || $description=="" || $categorie=="" || $prixDepart=="" || $prixAchatImmediat=="" || $typeVente=="" || $datefin=="" || $datefin < date('Y-m-d')){
+	if($nom=="" || $description=="" || $categorie=="" || $prixDepart=="" || $prixAchatImmediat=="" || $typeVente=="" || $datefin=="" || $datefin < date('Y-m-d')|| $photo=="PhotoItem/"|| $image2=="PhotoItem/"|| $image3=="PhotoItem/"){
 
   		header('Location: http://localhost/projet-piscine2023/viewcompte.php?error=1');
 		exit;
