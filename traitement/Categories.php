@@ -22,8 +22,8 @@ function affichageCategorie($mode){
 				}
 			}
 
-		}elseif($mode == "Ferraille ou Tresor"){
-			$sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Ferraille ou Tresor';";
+		}elseif($mode == "Accessible"){
+			$sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Accessible';";
 			$resultVente = mysqli_query($db_handle, $sqlVente);
 			if (mysqli_num_rows($resultVente) == 0) {
 				echo "Aucune Vente pour cette categorie";
@@ -33,8 +33,8 @@ function affichageCategorie($mode){
 				}
 			}
 
-		}elseif ($mode =="Bon pour le Musee") {
-			$sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Bon pour le Musee';";
+		}elseif ($mode =="Collection") {
+			$sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Collection';";  
 			$resultVente = mysqli_query($db_handle, $sqlVente);
 			if (mysqli_num_rows($resultVente) == 0) {
 				echo "Aucune Vente pour cette categorie";
@@ -44,8 +44,8 @@ function affichageCategorie($mode){
 				}
 			}
 
-		}elseif($mode =="Accessoire VIP"){
-			$sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Accessoire VIP';";
+		}elseif($mode =="Unique"){
+			$sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Unique';";
 			$resultVente = mysqli_query($db_handle, $sqlVente);
 			if (mysqli_num_rows($resultVente) == 0) {
 				//le livre recherché n'existe pas

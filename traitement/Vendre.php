@@ -66,7 +66,7 @@ function afficheVenteVendeur($data, $data2){
   <p class="title">{$data['PrixAchatImmediat']}€</p>
   </div>
 	<div class="min-gap ml-auto"></div>
-	<form action="traitementSuppressionVenteVendeur.php?idvente={$data['IdVente']}" method="post">
+	<form action="traitement/SuppressionVenteVendeur.php?idvente={$data['IdVente']}" method="post">
 	<input type="submit" class="btn btn-outline-danger text-uppercase" value="Supprimer cette vente">
 	</form>
 </div>
@@ -84,7 +84,7 @@ function afficheFormulaireVente (){
 	<div class="d-flex ">
 	</div>
 	<div class="d-flex  form_container">
-	<form action="traitementAjoutVente.php" method="post" enctype="multipart/form-data">
+	<form action="traitement/AjoutVente.php" method="post" enctype="multipart/form-data">
 	<div class="input-group mb-3">
 	<input type="text" name="Nom" class="form-control input_user" placeholder="Nom du produit" >
 	</div>
@@ -94,9 +94,9 @@ function afficheFormulaireVente (){
 	</div>
 	<td class="ml-auto">
 	<select class="form-control ml-2 mb-2 " name="Categorie" size="1">
-	<option>Ferraille ou Tresor</option>
-	<option>Bon pour le Musee</option>
-	<option>Accessoire VIP</option>
+	<option>Accessible</option>
+	<option>Collection</option>
+	<option>Unique</option>
 	</select> </td>
 	</div>
 	<div class="form-group">

@@ -53,7 +53,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
       </li>-->
 
       <?php
-      if($_SESSION['Type']!="Admin"){
+      if($_SESSION['Type']=="Client"){
         echo'
         <li class="nav-item">
           <a class="navbar-brand" href="viewpanier.php">

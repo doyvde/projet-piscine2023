@@ -53,7 +53,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
       </li>-->
 
       <?php
-      if($_SESSION['Type']!="Admin"){
+      if($_SESSION['Type']=="Client"){
         echo'
         <li class="nav-item">
           <a class="navbar-brand" href="viewpanier.php">
@@ -124,7 +124,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
 
   <section class="jumbotron text-center" style=" background-image: url(diademe.png)" >
     <div class="container">
-      <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">FERRAILLES & TRESORS</h1>
+      <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">Nos pièces les plus accessibles</h1>
 
     </div>
   </section>
@@ -139,7 +139,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
           <?php
 
           include 'traitement/Categories.php';
-            affichageCategorie("Ferraille ou Tresor");
+            affichageCategorie("Accessible");
             ?>
 
           </ul> <!-- End -->
@@ -155,7 +155,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
   <div class="container mt-2">
     <div class="row">
       <div class="col-sm-12 col-md-6" style="padding: 50px">
-      <a href="viewAccueil.php"><input type="submit" class="btn btn-secondary" style="text-transform:uppercase" value="Retour en haut " ></a>
+      <a href="#"><input type="submit" class="btn btn-secondary" style="text-transform:uppercase" value="Retour en haut " ></a>
       </div>
 
       <div class="col-xs-6 col-md-3">

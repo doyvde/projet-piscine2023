@@ -53,7 +53,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
       </li>-->
 
       <?php
-      if($_SESSION['Type']!="Admin"){
+      if($_SESSION['Type']=="Client"){
         echo'
         <li class="nav-item">
           <a class="navbar-brand" href="viewpanier.php">
@@ -229,6 +229,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
       <br>
       <div class="container">
         <?php
+        if($_SESSION['Type']=="Admin"){
         $error=isset($_GET["error"])? $_GET["error"] : "";
         $result=isset($_GET["result"])? $_GET["result"] : "";
         if($result==1){
@@ -244,7 +245,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
 
         ?>
         <?php include'traitement/Admin.php';
-        affichageAdmin($_SESSION['Type'],$_SESSION['Id']); ?>
+        affichageAdmin($_SESSION['Type'],$_SESSION['Id']);} ?>
       </div>
 </body>
     <footer class="site-footer mt-auto" style="clear:both;height:150px;bottom:0px;width:100%; padding: 50px">
@@ -253,7 +254,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
       <div class="container mt-2">
         <div class="row">
           <div class="col-sm-12 col-md-6" style="padding: 50px">
-          <a href="viewAccueil.php"><input type="submit" class="btn btn-secondary" style="text-transform:uppercase" value="Retour en haut " ></a>
+          <a href="#"><input type="submit" class="btn btn-secondary" style="text-transform:uppercase" value="Retour en haut " ></a>
           </div>
 
           <div class="col-xs-6 col-md-3">
