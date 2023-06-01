@@ -60,6 +60,7 @@ function traitementAffichageEnchere($id,$db_handle)
 {
 	$sqlNego = "SELECT * FROM enchere WHERE IdClient = $id;";
 	$resultAPayer = mysqli_query($db_handle, $sqlNego);
+	if(mysqli_num_rows($resultAPayer)==0) echo "Vous n'avez pas fait d'Enchères.";
 	if(mysqli_num_rows($resultAPayer)!=0){
 		while($dataAPayer =  mysqli_fetch_assoc($resultAPayer)){
 			affichageEnchere($dataAPayer,$db_handle);

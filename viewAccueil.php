@@ -68,7 +68,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
        
       <li class="nav-item">
         <a class="nav-link" style="color:black" href="traitement/Logout.php">
-          <input type="submit" class="btn btn-primary" style="text-transform:uppercase" value="Se deconnecter">
+          <input type="submit" class="btn btn-danger" style="text-transform:uppercase" value="Se deconnecter">
         </a>
       </li>
       <?php
@@ -128,6 +128,20 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
       <p style="color:white;font-weight:bold"> <br>Retrouvez toutes nos offres à partir de l'onglet Catégories.<br> Allez consulter vos négociations et votre historique d'achat sur l'onglet Achats & Négociations.<br> <br><br><br><br><br><br><br><br><br>Si vous avez acquis un bien par une enchère ou une négociation, vos articles attendent leur paiement ci-dessous. </p>
     </div>
   </section>
+  
+  <div class=container>
+    
+    <?php
+
+          include 'traitement/Carrousel.php';
+          affichageCarou($_SESSION['Id'],$_SESSION['Type']);
+    ?>
+    
+    <br>
+    <br>
+    
+
+  </div>
   
   <div class=container>
     

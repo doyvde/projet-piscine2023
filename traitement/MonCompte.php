@@ -124,6 +124,11 @@ function afficheClient($data){
 													<div class="d-flex justify-content-start">
 															<div class="userData ml-3">
 																	<h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">INFORMATION</h2>
+																	<br>
+																	<h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">{$data['Prenom']} {$data['Nom']}</h2>
+													<div class="image-container">
+																	<img src="{$data['Photo']}" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+													</div>
 																</div>
 															<div class="ml-auto">
 																	<input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />

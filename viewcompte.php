@@ -68,7 +68,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
        
       <li class="nav-item">
         <a class="nav-link" style="color:black" href="traitement/Logout.php">
-          <input type="submit" class="btn btn-primary" style="text-transform:uppercase" value="Se deconnecter">
+          <input type="submit" class="btn btn-danger" style="text-transform:uppercase" value="Se deconnecter">
         </a>
       </li>
       <?php
