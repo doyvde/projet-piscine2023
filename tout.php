@@ -131,47 +131,338 @@ if ($_SESSION['Type'] == "" || $_SESSION['Id'] == "") {
 
     </div>
   </section>
- <!-- <div class="card"  style="width: 18rem">
-    <img src="" class="card-img-top" width="50%">
-    <div class="card-body" ">
-	<div class=" label-group fixed">
-      <h5 class=" card-title">teste</h5>
-    </div>
-    <div class="min-gap"></div>
-    <div class="label-group">
-      <p class="caption">Type d'achat</p>
-      <p class="title">teste</p>
-    </div>
-    <div class="min-gap"></div>
-    <div class="label-group">
-      <p class="caption">Catégorie</p>
-      <p class="title">teste</p>
-    </div>
-    <div class="min-gap"></div>
-    <div class="label-group">
-      <p class="caption">Prix de Départ </p>
-      <p class="title">tetste</p>
-    </div>
-    <div class="min-gap"></div>
-    <div class="label-group">
-      <p class="caption">Prix d'Achat Immediat</p>
-      <p class="title">teste</p>
-    </div>
-    <br>
-    <a href="viewproduit.php" class="btn btn-outline-danger align-self-center"> Voir l'Annonce </a>
-  </div>
-  </div>*/-->
+
+
   <div class="container py-5">
 
+
     <div class="row">
+
       <div class="col-lg-8 mx-auto">
+        <div class="card">
+          <h5 class="card-header">
+            <a class="btn btn-outline-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Filtre et Tri
+            </a>
+          </h5>
+          <div class="collapse" id="collapseExample">
+            <div class="card-body">
+              <h5 class="card-title">Filtrer par :</h5>
+              <form action="tout.php?result=1" method="post">
+                <h6 class="card-title">Prix de Depart</h6>
+                <div class="input-group mb-3">
+                  <input type="number" name="PrixDepartMin" class="form-control input_user" placeholder="Min">
+                </div>
+                <div class="input-group mb-3">
+                  <input type="number" name="PrixDepartMax" class="form-control input_user" placeholder="Max">
+                </div>
+                <h6 class="card-title">Prix Achat Immediat</h6>
+                <div class="input-group mb-3">
+                  <input type="number" name="PrixAchatImmediatMin" class="form-control input_user" placeholder="Min">
+                </div>
+                <div class="input-group mb-3">
+                  <input type="number" name="PrixAchatImmediatMax" class="form-control input_user" placeholder="Max">
+                </div>
+                <h6 class="card-title">Type de vente :</h6>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="type"  value="nego" id="checkoutForm1" />
+                  <label class="form-check-label" for="checkoutForm1">
+                    Negociations
+                  </label>
+                </div>
+
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" name="type2" value="enchere" id="checkoutForm2" />
+                  <label class="form-check-label" for="checkoutForm2">
+                    Enchere
+                  </label>
+                </div>
+
+                <hr>
+                <h5 class="card-title">Trier par :</h5>
+
+
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkoutForm3" value="Croissant" checked />
+                  <label class="form-check-label" for="checkoutForm3">
+                    Croissant
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkoutForm4" value="Decroissant" />
+                  <label class="form-check-label" for="checkoutForm4">
+                    Décroissant
+                  </label>
+                </div>
+                <br>
+
+
+                <div class="d-flex  mt-3  login_container">
+                  <input type="submit" class="btn btn-outline-danger" style="text-transform : uppercase" value="Appliquer">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <br>
         <!-- List group-->
         <ul class="list-group shadow">
           <!-- list group item-->
-          <?php
+          <?php $result = isset($_GET["result"]) ? $_GET["result"] : "";
+          if ($result == 1) {
 
-          include 'traitement/Categories.php';
-          affichageCategorie("Toutes Categories");
+            function triTC($sqlVente, $prixDepartMin, $prixDepartMax, $prixAchatImmediatMin, $prixAchatImmediatMax, $ordre,$type,$type2)
+            {
+              if ($type=='nego'){
+                
+                if ($type2=='enchere'){
+                  if ($prixDepartMin != "" && $prixDepartMax != "" && $prixAchatImmediatMin == "" && $prixAchatImmediatMax == "") {
+                    $sqlVente .= "WHERE PrixDepart BETWEEN '$prixDepartMin' AND '$prixDepartMax'";
+                    if ($ordre == "Croissant") {
+                      $sqlVente .= "ORDER BY PrixDepart ASC;";
+                    } else {
+                      $sqlVente .= "ORDER BY PrixDepart DESC;";
+                    }
+                  }
+                  if ($prixAchatImmediatMin != "" && $prixAchatImmediatMax != "" && $prixDepartMin == "" && $prixDepartMax == "") {
+                    $sqlVente .= "WHERE PrixAchatImmediat BETWEEN '$prixAchatImmediatMin' AND '$prixAchatImmediatMax'";
+                    if ($ordre == "Croissant") {
+                      $sqlVente .= "ORDER BY PrixAchatImmediat ASC;";
+                    } else {
+                      $sqlVente .= "ORDER BY PrixAchatImmediat DESC;";
+                    }
+                  }
+                }else{
+                  $sqlVente .= "WHERE TypeVente = 'Negociation'";
+                  if ($prixDepartMin != "" && $prixDepartMax != "" && $prixAchatImmediatMin == "" && $prixAchatImmediatMax == "") {
+                    $sqlVente .= "AND PrixDepart BETWEEN '$prixDepartMin' AND '$prixDepartMax'";
+                    if ($ordre == "Croissant") {
+                      $sqlVente .= "ORDER BY PrixDepart ASC;";
+                    } else {
+                      $sqlVente .= "ORDER BY PrixDepart DESC;";
+                    }
+                  }
+                  if ($prixAchatImmediatMin != "" && $prixAchatImmediatMax != "" && $prixDepartMin == "" && $prixDepartMax == "") {
+                    $sqlVente .= "AND PrixAchatImmediat BETWEEN '$prixAchatImmediatMin' AND '$prixAchatImmediatMax'";
+                    if ($ordre == "Croissant") {
+                      $sqlVente .= "ORDER BY PrixAchatImmediat ASC;";
+                    } else {
+                      $sqlVente .= "ORDER BY PrixAchatImmediat DESC;";
+                    }
+                  }
+                }
+              }
+              elseif ($type2=='enchere'){
+                $sqlVente .= "WHERE TypeVente = 'Enchere'";
+                if ($prixDepartMin != "" && $prixDepartMax != "" && $prixAchatImmediatMin == "" && $prixAchatImmediatMax == "") {
+                  $sqlVente .= "AND PrixDepart BETWEEN '$prixDepartMin' AND '$prixDepartMax'";
+                  if ($ordre == "Croissant") {
+                    $sqlVente .= "ORDER BY PrixDepart ASC;";
+                  } else {
+                    $sqlVente .= "ORDER BY PrixDepart DESC;";
+                  }
+                }
+                if ($prixAchatImmediatMin != "" && $prixAchatImmediatMax != "" && $prixDepartMin == "" && $prixDepartMax == "") {
+                  $sqlVente .= "AND PrixAchatImmediat BETWEEN '$prixAchatImmediatMin' AND '$prixAchatImmediatMax'";
+                  if ($ordre == "Croissant") {
+                    $sqlVente .= "ORDER BY PrixAchatImmediat ASC;";
+                  } else {
+                    $sqlVente .= "ORDER BY PrixAchatImmediat DESC;";
+                  }
+                }
+              }
+
+              
+              if ($prixAchatImmediatMin == "" && $prixAchatImmediatMax == "" && $prixDepartMin == "" && $prixDepartMax == "") {
+                
+                if ($ordre == "Croissant") {
+                  $sqlVente .= "ORDER BY PrixAchatImmediat ASC;";
+                } else {
+                  $sqlVente .= "ORDER BY PrixAchatImmediat DESC;";
+                }
+              }
+              return $sqlVente;
+            }
+
+            function tri($sqlVente, $prixDepartMin, $prixDepartMax, $prixAchatImmediatMin, $prixAchatImmediatMax, $ordre,$type,$type2)
+            {
+              if ($type=='nego'){
+                
+                if ($type2=='enchere'){
+                  if ($prixDepartMin != "" && $prixDepartMax != "" && $prixAchatImmediatMin == "" && $prixAchatImmediatMax == "") {
+                    $sqlVente .= "AND PrixDepart BETWEEN '$prixDepartMin' AND '$prixDepartMax'";
+                    if ($ordre == "Croissant") {
+                      $sqlVente .= "ORDER BY PrixDepart ASC;";
+                    } else {
+                      $sqlVente .= "ORDER BY PrixDepart DESC;";
+                    }
+                  }
+                  if ($prixAchatImmediatMin != "" && $prixAchatImmediatMax != "" && $prixDepartMin == "" && $prixDepartMax == "") {
+                    $sqlVente .= "AND PrixAchatImmediat BETWEEN '$prixAchatImmediatMin' AND '$prixAchatImmediatMax'";
+                    if ($ordre == "Croissant") {
+                      $sqlVente .= "ORDER BY PrixAchatImmediat ASC;";
+                    } else {
+                      $sqlVente .= "ORDER BY PrixAchatImmediat DESC;";
+                    }
+                  }
+                }else{
+                  $sqlVente .= "AND TypeVente = 'Negociation'";
+                  if ($prixDepartMin != "" && $prixDepartMax != "" && $prixAchatImmediatMin == "" && $prixAchatImmediatMax == "") {
+                    $sqlVente .= "AND PrixDepart BETWEEN '$prixDepartMin' AND '$prixDepartMax'";
+                    if ($ordre == "Croissant") {
+                      $sqlVente .= "ORDER BY PrixDepart ASC;";
+                    } else {
+                      $sqlVente .= "ORDER BY PrixDepart DESC;";
+                    }
+                  }
+                  if ($prixAchatImmediatMin != "" && $prixAchatImmediatMax != "" && $prixDepartMin == "" && $prixDepartMax == "") {
+                    $sqlVente .= "AND PrixAchatImmediat BETWEEN '$prixAchatImmediatMin' AND '$prixAchatImmediatMax'";
+                    if ($ordre == "Croissant") {
+                      $sqlVente .= "ORDER BY PrixAchatImmediat ASC;";
+                    } else {
+                      $sqlVente .= "ORDER BY PrixAchatImmediat DESC;";
+                    }
+                  }
+                }
+              }
+              elseif ($type2=='enchere'){
+                $sqlVente .= "AND TypeVente = 'Enchere'";
+                if ($prixDepartMin != "" && $prixDepartMax != "" && $prixAchatImmediatMin == "" && $prixAchatImmediatMax == "") {
+                  $sqlVente .= "AND PrixDepart BETWEEN '$prixDepartMin' AND '$prixDepartMax'";
+                  if ($ordre == "Croissant") {
+                    $sqlVente .= "ORDER BY PrixDepart ASC;";
+                  } else {
+                    $sqlVente .= "ORDER BY PrixDepart DESC;";
+                  }
+                }
+                if ($prixAchatImmediatMin != "" && $prixAchatImmediatMax != "" && $prixDepartMin == "" && $prixDepartMax == "") {
+                  $sqlVente .= "AND PrixAchatImmediat BETWEEN '$prixAchatImmediatMin' AND '$prixAchatImmediatMax'";
+                  if ($ordre == "Croissant") {
+                    $sqlVente .= "ORDER BY PrixAchatImmediat ASC;";
+                  } else {
+                    $sqlVente .= "ORDER BY PrixAchatImmediat DESC;";
+                  }
+                }
+              }
+
+              
+              if ($prixAchatImmediatMin == "" && $prixAchatImmediatMax == "" && $prixDepartMin == "" && $prixDepartMax == "") {
+                
+                if ($ordre == "Croissant") {
+                  $sqlVente .= "ORDER BY PrixAchatImmediat ASC;";
+                } else {
+                  $sqlVente .= "ORDER BY PrixAchatImmediat DESC;";
+                }
+              }
+              return $sqlVente;
+            }
+
+            //include 'connexion_bdd.php';
+            function affichageCategorie($mode, $prixDepartMin, $prixDepartMax, $prixAchatImmediatMin, $prixAchatImmediatMax, $ordre,$type,$type2)
+            {
+
+              list($db_found, $db_handle) = include 'traitement/connexion_bdd.php';
+
+              if ($db_found) {
+                if ($mode == 1) {
+                  $sqlVente = "SELECT * FROM Vente ";
+                  $sqlVente = triTC($sqlVente, $prixDepartMin, $prixDepartMax, $prixAchatImmediatMin, $prixAchatImmediatMax, $ordre,$type,$type2);
+                  echo "<p>{$sqlVente}</p>";
+                  $resultVente = mysqli_query($db_handle, $sqlVente);
+                  if (mysqli_num_rows($resultVente) == 0) {
+                    echo "Aucune Vente pour cette categorie";
+                  } else {
+                    while ($data = mysqli_fetch_assoc($resultVente)) {
+                      afficheVente($data);
+                    }
+                  }
+                } elseif ($mode == 2) {
+                  $sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Accessible'";
+                  $sqlVente = tri($sqlVente, $prixDepartMin, $prixDepartMax, $prixAchatImmediatMin, $prixAchatImmediatMax, $ordre,$type,$type2);
+                  $resultVente = mysqli_query($db_handle, $sqlVente);
+                  if (mysqli_num_rows($resultVente) == 0) {
+                    echo "Aucune Vente pour cette categorie";
+                  } else {
+                    while ($data = mysqli_fetch_assoc($resultVente)) {
+                      afficheVente($data);
+                    }
+                  }
+                } elseif ($mode == 3) {
+                  $sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Collection'";
+                  $sqlVente = tri($sqlVente, $prixDepartMin, $prixDepartMax, $prixAchatImmediatMin, $prixAchatImmediatMax, $ordre,$type,$type2);
+                  $resultVente = mysqli_query($db_handle, $sqlVente);
+                  if (mysqli_num_rows($resultVente) == 0) {
+                    echo "Aucune Vente pour cette categorie";
+                  } else {
+                    while ($data = mysqli_fetch_assoc($resultVente)) {
+                      afficheVente($data);
+                    }
+                  }
+                } elseif ($mode == 4) {
+                  $sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Unique'";
+                  $sqlVente = tri($sqlVente, $prixDepartMin, $prixDepartMax, $prixAchatImmediatMin, $prixAchatImmediatMax, $ordre,$type,$type2);
+                  $resultVente = mysqli_query($db_handle, $sqlVente);
+                  if (mysqli_num_rows($resultVente) == 0) {
+                    //le livre recherché n'existe pas
+                    echo "Aucune Vente pour cette categorie";
+                  } else {
+                    while ($data = mysqli_fetch_assoc($resultVente)) {
+                      afficheVente($data);
+                    }
+                  }
+                } else echo "categorie non definie";
+              } else {
+                echo "Database not found";
+              }
+              //fermer la connexion
+              mysqli_close($db_handle);
+            }
+
+
+            function afficheVente($data)
+            {
+              echo<<< FOOBAR
+                <li class="list-group-item">
+                <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                <div class="media-body order-2 order-lg-1" style="font-size:120%">
+                <a href="viewproduit.php?id={$data['IdVente']}" class="mt-0 font-weight-bold mb-2" style="color:black"> {$data['Nom']}  </a>
+                <p class="font-italic text-muted mb-0 small">{$data['Description']}</p>
+                <p class="text mb-0 small" style="black">Catégorie de Vente : {$data['TypeVente']}</p>
+                <p class="price-detail-wrap">
+                <dl class="param param-feature">
+                <dt>Prix de départ</dt>
+                <span class="price h3 text-warning">
+                <span class="currency">EUR €</span><span class="num">{$data['PrixDepart']}</span>
+                </span>
+                <dt>Prix d'achat immédiat</dt>
+                <span class="price h3 text-warning">
+                <span class="currency">EUR €</span><span class="num">{$data['PrixAchatImmediat']}</span>
+                </span>
+                </dl>
+                </div>
+                <img src="{$data['Photo']}"alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                </div>  </li>
+                FOOBAR;
+            }
+            $result = isset($_GET["result"]) ? $_GET["result"] : "";
+            
+            $prixDepartMin = isset($_POST["PrixDepartMin"]) ? $_POST["PrixDepartMin"] : "";
+            $prixDepartMax = isset($_POST["PrixDepartMax"]) ? $_POST["PrixDepartMax"] : "";
+            $prixAchatImmediatMin = isset($_POST["PrixAchatImmediatMin"]) ? $_POST["PrixAchatImmediatMin"] : "";
+            $prixAchatImmediatMax = isset($_POST["PrixAchatImmediatMax"]) ? $_POST["PrixAchatImmediatMax"] : "";
+            $type = isset($_POST["type"]) ? $_POST["type"] : "";
+            $type2 = isset($_POST["type2"]) ? $_POST["type2"] : "";
+            $ordre = isset($_POST["flexRadioDefault"]) ? $_POST["flexRadioDefault"] : "";
+
+
+
+            affichageCategorie($result, $prixDepartMin, $prixDepartMax, $prixAchatImmediatMin, $prixAchatImmediatMax, $ordre,$type,$type2);
+          } else {
+
+            include 'traitement/Categories.php';
+            affichageCategorie("Toutes Categories");
+          }
           ?>
 
         </ul> <!-- End -->

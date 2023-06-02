@@ -1,6 +1,10 @@
 <?php
-//include 'connexion_bdd.php';
-function affichageCategorie($mode){
+    //include 'connexion_bdd.php';
+function affichageCategorie($mode,$prixDepartMin,$prixDepartMax,$prixAchatImmediatMin,$prixAchatImmediatMax,$ordre){
+
+    
+
+    
 
 	/*//identifier votre BDD
 	$database = "ebayece";
@@ -11,8 +15,10 @@ function affichageCategorie($mode){
 	list($db_found,$db_handle)=include 'connexion_bdd.php';
 
 	if ($db_found) {
-		if($mode == "Toutes Categories"){
-			$sqlVente = "SELECT * FROM Vente";
+		if($mode == 1){
+			$sqlVente = "SELECT * FROM Vente ";
+            $sqlVente = triTC($sqlVente,$prixDepartMin,$prixDepartMax,$prixAchatImmediatMin,$prixAchatImmediatMax,$ordre);
+            echo"<p>{$sqlVente}</p>";
 			$resultVente = mysqli_query($db_handle, $sqlVente);
 			if (mysqli_num_rows($resultVente) == 0) {
 				echo "Aucune Vente pour cette categorie";
@@ -24,6 +30,7 @@ function affichageCategorie($mode){
 
 		}elseif($mode == "Accessible"){
 			$sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Accessible';";
+            $sqlVente = tri($sqlVente,$prixDepartMin,$prixDepartMax,$prixAchatImmediatMin,$prixAchatImmediatMax,$ordre);
 			$resultVente = mysqli_query($db_handle, $sqlVente);
 			if (mysqli_num_rows($resultVente) == 0) {
 				echo "Aucune Vente pour cette categorie";
@@ -34,7 +41,8 @@ function affichageCategorie($mode){
 			}
 
 		}elseif ($mode =="Collection") {
-			$sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Collection';";  
+			$sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Collection';"; 
+            $sqlVente = tri($sqlVente,$prixDepartMin,$prixDepartMax,$prixAchatImmediatMin,$prixAchatImmediatMax,$ordre); 
 			$resultVente = mysqli_query($db_handle, $sqlVente);
 			if (mysqli_num_rows($resultVente) == 0) {
 				echo "Aucune Vente pour cette categorie";
@@ -46,6 +54,7 @@ function affichageCategorie($mode){
 
 		}elseif($mode =="Unique"){
 			$sqlVente = "SELECT * FROM Vente WHERE Categorie = 'Unique';";
+            $sqlVente = tri($sqlVente,$prixDepartMin,$prixDepartMax,$prixAchatImmediatMin,$prixAchatImmediatMax,$ordre);
 			$resultVente = mysqli_query($db_handle, $sqlVente);
 			if (mysqli_num_rows($resultVente) == 0) {
 				//le livre recherché n'existe pas
@@ -88,7 +97,4 @@ function afficheVente($data){
 	</div>  </li>
 	FOOBAR;
 }
-
-
-
 ?>

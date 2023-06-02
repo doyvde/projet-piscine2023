@@ -134,7 +134,7 @@ function afficheFormulaireVente (){
 	<td><input type="file" name="image"></td>
 	</tr>
 	<br>
-	<tr>
+	<tr> 
 	<td>Image 2 du produit :</td>
 	<td><input type="file" name="image2"></td>
 	</tr>
