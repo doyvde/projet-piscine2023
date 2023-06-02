@@ -1,16 +1,17 @@
 <?php session_start();
+
 ?>
-<!doctype html>
+<!doctype HTML>
 <html>
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" type="image/png" href="systeme/headerlogo.png" />
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="viewAccueil.css" rel="stylesheet" type="text/css">
+    <link href="viewproduit.css" rel="stylesheet" type="text/css">
     <title>Drive Deal</title>
 </head>
 
@@ -121,62 +122,110 @@
         </ul>
     </nav>
 
-    <section class="jumbotron text-center" style="height:520px;background-image:url(musee.jpg);">
+    <section class="jumbotron text-center" style="background-image:url(bibli.png);">
         <div class="container">
-            <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">BIENVENUE <br>SUR <br>DRIVE DEAL</h1>
-            <p style="color:white;font-weight:bold"> <br>Retrouvez toutes nos offres à partir de l'onglet Catégories.<br> Allez consulter vos négociations et votre historique d'achat sur l'onglet Achats & Négociations.<br> <br><br><br><br><br><br><br><br><br>Si vous avez acquis un bien par une enchère ou une négociation, vos articles attendent leur paiement ci-dessous. </p>
+            <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">MON PRODUIT</h1>
+
         </div>
     </section>
 
-    <div class=container>
 
-        <?php
+    <?php
+    include 'traitement/Produit.php';
+    affichageProduit($_GET['id'], $_SESSION['Type']);
+    $enchere = isset($_GET["enchere"]) ? $_GET["enchere"] : "";
+    $nego = isset($_GET["nego"]) ? $_GET["nego"] : "";
+    $autoenchere = isset($_GET["autoenchere"]) ? $_GET["autoenchere"] : "";
+    $result = isset($_GET["result"]) ? $_GET["result"] : "";
 
-        include 'traitement/Carrousel.php';
-        affichageCarou($_SESSION['Type']);
-        ?>
+    if ($result == 3) {
+        echo <<< FOOBAR
+    <script language="javascript"> alert("Le produit est déjà dans votre panier"); </script>
+    FOOBAR;
+    }
 
-        <br>
-        <br>
+    if ($result == 1) {
+        echo <<< FOOBAR
+    <script language="javascript"> alert("Le produit a été ajouté au panier"); </script>
+    FOOBAR;
+    }
+    if ($enchere == 3) {
+        echo <<< FOOBAR
+    <script language="javascript"> alert("Vous ne pouvez pas entrer ce prix, l'offre n'a pas été ajoutée"); </script>
+    FOOBAR;
+    }
+
+    if ($enchere == 1) {
+        echo <<< FOOBAR
+    <script language="javascript"> alert("Bravo, l'offre a été ajoutée, vous avez acquis l'enchère"); </script>
+    FOOBAR;
+    }
+    if ($enchere == 2) {
+        echo <<< FOOBAR
+    <script language="javascript"> alert("Votre offre a été prise en compte mais un autre utilisateur a proposé un prix supérieur en auto-enchère"); </script>
+    FOOBAR;
+    }
+
+    if ($nego == 1) {
+        echo <<< FOOBAR
+    <script language="javascript"> alert("Bravo, votre première offre a été prise en compte"); </script>
+    FOOBAR;
+    }
+    if ($nego == 2) {
+        echo <<< FOOBAR
+    <script language="javascript"> alert("Vous ne pouvez pas proposer une offre à ce prix ou vous avez déjà proposé une négociation"); </script>
+    FOOBAR;
+    }
+    if ($autoenchere == 3) {
+        echo <<< FOOBAR
+    <script language="javascript"> alert("Vous ne pouvez pas entrer ce prix, l'offre n'a pas été ajoutée"); </script>
+    FOOBAR;
+    }
+
+    if ($autoenchere == 1) {
+        echo <<< FOOBAR
+    <script language="javascript"> alert("Bravo, l'offre a été ajoutée, vous avez acquis l'enchère"); </script>
+    FOOBAR;
+    }
+    if ($autoenchere == 2) {
+        echo <<< FOOBAR
+    <script language="javascript"> alert("Votre offre a été prise en compte mais un autre utilisateur a proposé un prix supérieur en auto-enchère"); </script>
+    FOOBAR;
+    }
 
 
-    </div>
 
-    <!-- Site footer -->
+    ?>
 
-
-
-    <!-- Copyright -->
 </body>
-<footer class="site-footer mt-auto" style="clear:both;height:150px;bottom:0px;width:100%; padding: 50px">
-    <hr>
+<br>
+<br>
+<br>
+<div>
+    <footer class="site-footer mt-auto" style="clear:both;height:150px;bottom:0px;width:100%; padding: 50px">
+        <hr>
 
-    <div class="container mt-2">
-        <div class="row">
-            <div class="col-sm-12 col-md-6" style="padding: 50px">
-                <a href="#"><input type="submit" class="btn btn-secondary" style="text-transform:uppercase" value="Retour en haut "></a>
+        <div class="container mt-2">
+            <div class="row">
+                <div class="col-sm-12 col-md-6" style="padding: 50px">
+                    <a href="#"><input type="submit" class="btn btn-secondary" style="text-transform:uppercase" value="Retour en haut "></a>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+
+                </div>
+
+                <div class=" col-md-3">
+                    <h6 style="padding: 50px"><strong>DRIVE DEAL</strong></h6>
+                </div>
             </div>
 
-            <div class="col-xs-6 col-md-3">
-
-            </div>
-
-            <div class=" col-md-3">
-                <h6 style="padding: 50px"><strong>DRIVE DEAL</strong></h6>
-            </div>
+        </div>
+        <div class="footer-copyright text-center py-2" style="background-color:white">Copyright &copy; 2023 All Rights Reserved to Drive Deal
         </div>
 
-    </div>
-    <div class="footer-copyright text-center py-2" style="background-color:white">Copyright &copy; 2023 All Rights Reserved to Drive Deal
-    </div>
-
-</footer>
-
-<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-<script id="rendered-js"> </script>
-
-
+    </footer>
+</div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>

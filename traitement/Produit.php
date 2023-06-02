@@ -19,7 +19,9 @@ function affichageProduit($idVente, $type){
 		}elseif($type == 'Client'){
 			traitementAffichageClient($idVente,$db_handle);
 
-		}else echo "type invalide";
+		}else{
+			traitementAffichageNoClient($idVente,$db_handle);
+		};
 	}else {
 		echo "Database not found";
 	}
@@ -319,6 +321,192 @@ function affichageVenteClient($dataVente,$db_handle){
 			</div>
 			FOOBAR;
 		}
+	}
+
+
+
+
+}
+
+function traitementAffichageNoClient($idVente, $db_handle){
+	$sqlVente = "SELECT * FROM Vente WHERE IdVente= $idVente;";
+	$resultVente = mysqli_query($db_handle, $sqlVente);
+	$dataVente = mysqli_fetch_assoc($resultVente);
+	affichageVenteNoClient($dataVente,$db_handle);
+
+}
+
+function affichageVenteNoClient($dataVente,$db_handle){
+	//teste data type de vente et affiche en fonction sachant que c un client
+	$idVente=$dataVente['IdVente'];
+	echo <<< FOOBAR
+	<div class="container">
+	<div class="row">
+	<div class="col border-right">
+	<div id="carouselExampleControls" class="carousel slide border-right" data-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+			<img src="{$dataVente['Photo']}" class="d-block w-100" alt="...">
+			</div>
+			<div class="carousel-item">
+			<img src="{$dataVente['Image2']}" class="d-block w-100" alt="...">
+			</div>
+			<div class="carousel-item">
+			<img src="{$dataVente['Image3']}" class="d-block w-100" alt="...">
+			</div>
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+	
+	</div>
+	<aside class="col-sm-7 border-right border-top border-bottom">
+	<article class="card-body p-5">
+	<h3 class="title mb-3">{$dataVente['Nom']}</h3>
+	<hr>
+	<dl class="item-property">
+	<dt>Description</dt>
+	<dd><p>{$dataVente['Description']}
+	</dl>
+	<dl class="param param-feature">
+	<dt>Catégorie</dt>
+	<dd>{$dataVente['Categorie']}</dd>
+	</dl>
+	<dl class="param param-feature">
+	<dt>Type de vente</dt>
+	<dd>{$dataVente['TypeVente']} ou Vente directe</dd>
+	</dl>
+	<hr>
+	<dl class="param param-feature">
+	<dt>Prix d'achat immédiat</dt>
+	</dl>
+	<p class="price-detail-wrap">
+	<span class="price h3 text-warning">
+	<span class="currency">EUR €</span><span class="num">{$dataVente['PrixAchatImmediat']} </span>
+	</span>
+	</p>
+	<a href="index1.php" class="btn btn-lg btn-outline-dark text-uppercase"> <i class="fas fa-shopping-cart"></i> Ajouter au panier </a> <a href="index1.php" class="btn btn-lg btn-outline-danger text-uppercase"> <i class="fas fa-shopping-cart"></i> Achat Immediat</a>
+	FOOBAR;
+
+	if($dataVente['TypeVente']=="Enchere")
+	{
+		$sql = "SELECT * FROM enchere WHERE IdVente = $idVente;";
+		$result = mysqli_query($db_handle, $sql);
+
+		if (mysqli_num_rows($result) != 0) $data = mysqli_fetch_assoc($result);
+
+		echo <<< FOOBAR
+		<hr>
+		<dl class="param param-feature">
+		<dt>Prix de départ</dt>
+		</dl>
+		<p class="price-detail-wrap">
+		<span class="price h3 text-warning">
+		<span class="currency">EUR €</span><span class="num">{$dataVente['PrixDepart']}</span>
+		</span>
+		FOOBAR;
+
+		if (mysqli_num_rows($result) != 0){
+			echo <<< FOOBAR
+			<hr>
+			<dl class="param param-feature">
+			<dt>Prix Actuel</dt>
+			</dl>
+			<p class="price-detail-wrap">
+			<span class="price h3 text-warning">
+			<span class="currency">EUR €</span><span class="num">{$data['PrixActuel']}</span>
+			</span>
+			<dl class="param param-feature">
+			<dt>Date de fin d'enchere</dt>
+			</dl>
+			<span class="price h3 text-danger">
+			<span class="date">{$dataVente['DateFin']}</span>
+			</span>
+			FOOBAR;
+
+		}
+		echo <<< FOOBAR
+		</p>
+		<form action="index1.php" method="post">
+		<div class="input-group mb-3">
+		<input type="number" name="prix" class="form-control input_user" placeholder="Entrer ici votre prix" >
+		</div>
+		<div class="d-flex  mt-3 login_container">
+		<input type="submit" class="btn btn-outline-dark text-uppercase" value="Faire une offre d'enchere">
+		</div>
+		</form>
+		<hr>
+		<dl class="param param-feature">
+		<dt>Auto-Enchère Maximale</dt>
+		</dl>
+		<form action="index1.php" method="post">
+		<div class="input-group mb-3">
+		<input type="number" name="prix" class="form-control input_user" placeholder="Entrer ici votre prix maximal pour l'auto-enchère" >
+		</div>
+		<div class="d-flex  mt-3 login_container">
+		<input type="submit" class="btn btn-outline-dark text-uppercase" value="Faire une offre d'auto-enchere max">
+		</div>
+		</form>
+		</article>
+		</aside>
+		</div>
+		</div>
+		</div>
+		FOOBAR;
+	}
+
+	if($dataVente['TypeVente']=="Negociation"){
+
+		$idclient=$_SESSION['Id'];
+		$sqlnego = "SELECT * FROM negociation WHERE IdVente = $idVente  ;";
+		$resultnego = mysqli_query($db_handle, $sqlnego);
+
+
+
+		echo <<< FOOBAR
+		<hr>
+		<dl class="param param-feature">
+		<dt>Prix de départ</dt>
+		</dl>
+		<p class="price-detail-wrap">
+		<span class="price h3 text-warning">
+		<span class="currency">EUR €</span><span class="num">{$dataVente['PrixDepart']}</span>
+		</span>
+		</p>
+		<dl class="param param-feature">
+		<dt>Date de fin </dt>
+		</dl>
+		<span class="price h3 text-danger">
+		<span class="date">{$dataVente['DateFin']}</span>
+		</span>
+		<hr>
+		<dl class="param param-feature">
+		<dt>Négociation</dt>
+		</dl>
+		FOOBAR;
+		
+			echo <<< FOOBAR
+			<form action="index1.php" method="post">
+			<div class="input-group mb-3">
+			<input type="number" name="prix" class="form-control input_user" placeholder="Entrez ici votre prix" >
+			</div>
+			<div class="d-flex  mt-3 login_container">
+			<input type="submit" class="btn btn-outline-dark text-uppercase" value="Proposer une négociation">
+			</div>
+			</form>
+			</article>
+			</aside>
+			</div>
+			</div>
+			</div>
+			FOOBAR;
+		
 	}
 
 

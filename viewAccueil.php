@@ -11,7 +11,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <link rel="shortcut icon" type="image/png" href="systeme/headerlogo.png"/>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link href="viewAccueil.css" rel="stylesheet" type="text/css">
@@ -89,7 +89,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
                   <img src="{$data['Photo']}" width="40" height="40" class="d-inline-block align-top" alt="compte" style="border-radius: 100%;">
                 </a>
               </li> 
-              FOOBAR;
+              FOOBAR; 
             }}
         
       }elseif($_SESSION['Type']=="Client"){
@@ -134,7 +134,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
     <?php
 
           include 'traitement/Carrousel.php';
-          affichageCarou($_SESSION['Id'],$_SESSION['Type']);
+          affichageCarou($_SESSION['Type']);
     ?>
     
     <br>

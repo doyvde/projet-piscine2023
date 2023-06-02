@@ -1,8 +1,5 @@
 <?php session_start();
-if ($_SESSION['Type'] == "" || $_SESSION['Id'] == "") {
-    header('Location: http://localhost/projet-piscine2023/index.php');
-    exit;
-}
+
 ?>
 <!doctype html>
 <html>
@@ -20,9 +17,9 @@ if ($_SESSION['Type'] == "" || $_SESSION['Id'] == "") {
 
 <body style="  min-height: 100%;margin-bottom: -100px;  padding-bottom: 100px;">
     <nav class="navbar navbar-expand-lg navbar-light align-items-end" style="font-size:130%;font-weight:bold">
-        <a class="navbar-brand" href="viewAccueil.php"> <img src="systeme/logo3.png" width="150" alt="logo"></a>
+        <a class="navbar-brand" href="index.php"> <img src="systeme/logo3.png" width="150" alt="logo"></a>
 
-        <form action="Search.php" method="post" class="form-inline ml-auto" style="padding-left: 18%">
+        <form action="SearchPUB.php" method="post" class="form-inline ml-auto" style="padding-left: 18%">
             <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><img src="systeme/search.png" width="30" height="30" class="d-inline-block align-top" alt="search"></button>
         </form>
@@ -34,11 +31,11 @@ if ($_SESSION['Type'] == "" || $_SESSION['Id'] == "") {
                     Catégories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="accessible.php">Nos pieces accessibles</a>
-                    <a class="dropdown-item" href="collection.php">Nos pieces de collection</a>
-                    <a class="dropdown-item" href="unique.php">Nos pieces uniques</a>
+                    <a class="dropdown-item" href="accessiblePUB.php">Nos pieces accessibles</a>
+                    <a class="dropdown-item" href="collectionPUB.php">Nos pieces de collection</a>
+                    <a class="dropdown-item" href="uniquePUB.php">Nos pieces uniques</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="tout.php">Voir tous les articles</a>
+                    <a class="dropdown-item" href="toutPUB.php">Voir tous les articles</a>
                 </div>
             </li>
 
@@ -68,8 +65,8 @@ if ($_SESSION['Type'] == "" || $_SESSION['Id'] == "") {
       </li>-->
 
             <li class="nav-item">
-                <a class="nav-link" style="color:black" href="traitement/Logout.php">
-                    <input type="submit" class="btn btn-danger" style="text-transform:uppercase" value="Se deconnecter">
+                <a class="nav-link" style="color:black" href="index1.php">
+                    <input type="submit" class="btn btn-danger" style="text-transform:uppercase" value="Se Connecter">
                 </a>
             </li>
             <?php
@@ -115,7 +112,7 @@ if ($_SESSION['Type'] == "" || $_SESSION['Id'] == "") {
                 }
             } else {
                 echo '<li class="nav-item">
-        <a class="nav-link"style="color:black" href="viewcompte.php">
+        <a class="nav-link"style="color:black" href="index1.php">
           <img src="systeme/compte.jpg" width="40" height="40" class="d-inline-block align-top" alt="compte">
         </a>
       </li>';
@@ -148,7 +145,7 @@ if ($_SESSION['Type'] == "" || $_SESSION['Id'] == "") {
                     <div class="collapse" id="collapseExample">
                         <div class="card-body">
                             <h5 class="card-title">Filtrer par :</h5>
-                            <form action="Search.php" method="post">
+                            <form action="SearchPUB.php" method="post">
                                 <h6 class="card-title">Prix de Depart</h6>
                                 <div class="input-group mb-3">
                                     <input type="number" name="PrixDepartMin" class="form-control input_user" placeholder="Min">
@@ -320,7 +317,7 @@ if ($_SESSION['Type'] == "" || $_SESSION['Id'] == "") {
                 <li class="list-group-item">
                 <div class="media align-items-lg-center flex-column flex-lg-row p-3">
                 <div class="media-body order-2 order-lg-1" style="font-size:120%">
-                <a href="viewproduit.php?id={$data['IdVente']}" class="mt-0 font-weight-bold mb-2" style="color:black"> {$data['Nom']}  </a>
+                <a href="viewproduitPUB.php?id={$data['IdVente']}" class="mt-0 font-weight-bold mb-2" style="color:black"> {$data['Nom']}  </a>
                 <p class="font-italic text-muted mb-0 small">{$data['Description']}</p>
                 <p class="text mb-0 small" style="black">Catégorie de Vente : {$data['TypeVente']}</p>
                 <p class="price-detail-wrap">

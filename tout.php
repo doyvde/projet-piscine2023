@@ -5,7 +5,7 @@ if ($_SESSION['Type'] == "" || $_SESSION['Id'] == "") {
 }
 ?>
 <!doctype html>
-<html lang="en">
+<html>
 
 <head>
   <!-- Required meta tags -->
