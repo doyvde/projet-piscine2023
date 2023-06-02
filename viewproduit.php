@@ -21,7 +21,7 @@ if($_SESSION['Type']=="" || $_SESSION['Id']=="")
   <nav class="navbar navbar-expand-lg navbar-light align-items-end"  style="font-size:130%;font-weight:bold">
     <a class="navbar-brand" href="viewAccueil.php"> <img src="systeme/logo3.png" width="150"  alt="logo"></a>
 
-    <form action="traitement/Search.php" method="post" class="form-inline ml-auto" style="padding-left: 18%">
+    <form action="Search.php" method="post" class="form-inline ml-auto" style="padding-left: 18%">
       <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><img src="systeme/search.png" width="30" height="30" class="d-inline-block align-top" alt="search"></button>
     </form>
