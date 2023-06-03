@@ -1,4 +1,6 @@
 <?php session_start();
+    //list($db_found,$db_handle)=include "traitement/connexion_bdd.php";
+    $_SESSION['Type']="";
 ?>
 <!doctype html>
 <html>
@@ -124,7 +126,7 @@
     <section class="jumbotron text-center" style="height:520px;background-image:url(musee.jpg);">
         <div class="container">
             <h1 class="jumbotron-heading align-items-top" style="font-size:500%;font-weight:bold;color:white">BIENVENUE <br>SUR <br>DRIVE DEAL</h1>
-            <p style="color:white;font-weight:bold"> <br>Retrouvez toutes nos offres à partir de l'onglet Catégories.<br> Allez consulter vos négociations et votre historique d'achat sur l'onglet Achats & Négociations.<br> <br><br><br><br><br><br><br><br><br>Si vous avez acquis un bien par une enchère ou une négociation, vos articles attendent leur paiement ci-dessous. </p>
+            <p style="color:white;font-weight:bold"> <br>Retrouvez toutes nos offres à partir de l'onglet Catégories.<br> Allez consulter vos négociations et votre historique d'achat sur l'onglet Mon compte.<br> <br><br><br><br><br><br><br><br><br>Si vous avez acquis un bien par une enchère ou une négociation, vos articles attendent leur paiement ci-dessous. </p>
         </div>
     </section>
 

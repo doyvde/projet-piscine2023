@@ -363,7 +363,7 @@
                                 if ($mode == 1) {
                                     $sqlVente = "SELECT * FROM Vente ";
                                     $sqlVente = triTC($sqlVente, $prixDepartMin, $prixDepartMax, $prixAchatImmediatMin, $prixAchatImmediatMax, $ordre, $type, $type2);
-                                    echo "<p>{$sqlVente}</p>";
+                                    //echo "<p>{$sqlVente}</p>";
                                     $resultVente = mysqli_query($db_handle, $sqlVente);
                                     if (mysqli_num_rows($resultVente) == 0) {
                                         echo "Aucune Vente pour cette categorie";

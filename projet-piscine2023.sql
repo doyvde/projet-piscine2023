@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 02 juin 2023 à 08:28
+-- Généré le : sam. 03 juin 2023 à 21:28
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `eceagorafrancia`
+-- Base de données : `projet-piscine2023`
 --
 
 -- --------------------------------------------------------
@@ -41,10 +41,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`IdAdmin`, `E-mail`, `Pseudo`, `MotDePasse`) VALUES
-(1, 'valentin.denis@edu.ece.fr', 'Val', 'valentin'),
-(2, 'amaury.forestier.ece.edu.fr', 'Amry', 'amaury'),
-(3, 'val', 'val', 'val'),
-(4, 'antoine.layani@edu.ece.fr', 'Ant', 'antoine');
+(3, 'valentin.denis@edu.ece.fr', 'val', 'val');
 
 -- --------------------------------------------------------
 
@@ -69,21 +66,6 @@ CREATE TABLE IF NOT EXISTS `apayer` (
   KEY `c11` (`IdClient`),
   KEY `cvendapayer` (`IdVendeur`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `apayer`
---
-
-INSERT INTO `apayer` (`IdVente`, `IdClient`, `IdVendeur`, `Nom`, `PrixAchat`, `PrixDepart`, `Photo`, `Video`, `Description`, `TypeAchat`, `Categorie`) VALUES
-(14, 6, 2, 'Montre Rolex DayJust', 17000, 15000, 'PhotoItem/Datejust.png', NULL, 'Rolex en or lunette cannelée ', 'Enchere', 'Accessible'),
-(15, 7, 1, 'Rolex Milgauss', 6500, 6500, 'PhotoItem/Milgauss.png', NULL, 'Une super belle montre Rolex pas tres chere', 'Enchere', 'Accessible'),
-(25, 3, 6, 'Boite Bijou en Verre', 450, 400, 'PhotoItem/Bijou4.PNG', NULL, 'Je vends cette superbe boite en or', 'Enchere', 'Accessible'),
-(27, 6, 5, 'Ferrari 250 GTO', 400000, 400000, 'PhotoItem/Voiture1.PNG', NULL, 'Je vends ma Ferrari car je ne roule plus avec.', 'Enchere', 'Unique'),
-(29, 8, 8, 'Tableau Lion', 300, 300, 'PhotoItem/Tableau2.PNG', NULL, 'Super tableau qui n a plus sa place chez moi, il vous fera rugir de plaisir.', 'Enchere', 'Accessible'),
-(30, 8, 8, 'Vase Grec', 12000, 8000, 'PhotoItem/Vase1.PNG', NULL, 'Ce vase est un vase de collection, a ne pas rater', 'Negociation', 'Collection'),
-(31, 7, 8, 'McLaren 720s', 310000, 300000, 'PhotoItem/Voiture3.PNG', NULL, 'Je vends ma voiture qui avance tres vite.', 'Enchere', 'Unique'),
-(39, 6, 2, 'Nuit Ã©toilÃ©e ', 300000, 300000, 'PhotoItem/Tableau5.PNG', NULL, 'Tableau original de la nuit etoile peint par Van Gogh lui meme.', 'Enchere', 'Collection'),
-(44, 1, 5, 'Omega Speedmaster', 4100, 3600, 'PhotoItem/Omega.PNG', NULL, 'Montre Omega qui est allÃ©e sur la lune, a ne pas rater, annÃ©e 2016, Etat : 8/10.', 'Negociation', 'Unique');
 
 -- --------------------------------------------------------
 
@@ -136,17 +118,9 @@ CREATE TABLE IF NOT EXISTS `client` (
 --
 
 INSERT INTO `client` (`IdClient`, `Nom`, `Prenom`, `E-mail`, `Pseudo`, `MotDePasse`, `Adresse`, `CodePostal`, `Ville`, `Pays`, `Telephone`, `Panier`, `TypeCarte`, `NumCarte`, `NomCarte`, `DateExpCarte`, `CodeCarte`, `PorteMonnaie`, `Photo`) VALUES
-(1, 'Simpson', 'Bart', 'bartsimpson@edu.ece.fr', 'bart', 'simpson', '123 route de bart', 13009, 'Springfield', 'USA', '0625032528', NULL, 'Visa', '1234123412341234', 'Bart Simpson', '12/2020', 123, 7793, ''),
-(2, 'Simpson', 'Lisa', 'lisasimpson@edu.ece.fr', 'lisa', 'simpson', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', NULL, 'Visa', '3456345634563456', 'Lisa Simpson', '08/2020', 141, 250, ''),
-(3, 'Simpson', 'Maggie', 'maggiesimpson@edu.ece.fr', 'maggie', 'simpson', '123 route de bart', 13009, 'Springfield', 'USA', '0625032529', NULL, 'MasterCard', '1234567812345678', 'Maggie Simpson', '12/2022', 234, 10000, ''),
-(4, 'Smith', 'Morty', 'Morty.smith@ece.fr', 'morty', 'smith', '14 rue de l\'espace', 12000, 'Mars', 'Macedoine', '0989896756', '15,22', 'American Express', '1111222233334444', 'Morty Smith', '12/2022', 567, 476300, ''),
-(5, 'Messi', 'Lionel', 'lionel.messi@ece.fr', 'lionel', 'messi', '122 rue du camp nou', 78888, 'Barcelone', 'Espagne', '0855949329', NULL, 'MasterCard', '3333777788884444', 'Lionel Messi', '01/2021', 789, 780000, ''),
-(6, 'Macron', 'Emmanuel', 'parcequecnotreprojet@elysee.fr', 'emmanuel', 'macron', '55 rue du Faubourg-Saint-HonorÃ©', 75008, 'Paris', 'France', '0491229939', '27', 'American Express', '6666777733338888', 'Emmanuel Macron', '09/2023', 735, 500000, ''),
-(7, 'Trump', 'Donald', 'donald.trump@ece.fr', 'donald', 'trump', 'La maison Blanche', 90001, 'Washington', 'Etats_Unis', '0444955396', NULL, 'American Express', '5656454578789898', 'Donald Trump', '07/2023', 678, 800000, ''),
-(8, 'Raoult', 'Didier', 'coronavirus@ece.fr', 'didier', 'raoult', '12 rue du virus', 13008, 'Marseille', 'France', '0899923939', NULL, 'MasterCard', '1222334050402839', 'Didier Raoult', '08/2021', 230, 70000, ''),
-(19, 'valou', 'valou', 'valou@valou', 'valou', 'valou', 'valou', 190903, 'valouville', 'Albanie', '4446445554', NULL, 'Visa', '190903', 'valou', '09/03', 190, 9943874, 'PhotoProfil/2021-McLaren-765LT-015-1600.jpg'),
-(20, 'Valentin', 'Denis', 'denisvalpro@gmail.com', 'valoup', 'valoup', '288 Rue de Vaugirard', 75015, 'Paris', 'France', '0625851838', NULL, 'Visa', '190903', 'Denis', '09/03', 197, 10000000, 'PhotoProfil/2021-Formula1-Alpine-A521-005-1600.jpg'),
-(21, 'Layani', 'Antoine', 'ant@ant', 'ant', 'ant', 'antony', 78018, 'antony', 'France', '06932558', NULL, 'Visa', '454654', 'ant', '45/89', 569, 500000, 'PhotoProfil/2014-Mercedes-Benz-SLS-AMG-Black-Series-009-1600.jpg');
+(19, 'valou', 'valou', 'valou@edu.ece.fr', 'valou', 'valou', '43 rue de grennelle', 19090, 'Valouville', 'Albanie', '4446445554', '63', 'Visa', '190903', 'valou', '09/33', 190, 9943874, 'PhotoProfil/2021-McLaren-765LT-015-1600.jpg'),
+(20, 'Denis', 'Valentin', 'valentin.denis@edu.ece.fr', 'valoup', 'valoup', '10 Rue Sextius Michel', 75015, 'Paris', 'France', '0629821633', NULL, 'Visa', '190903', 'Denis', '09/33', 197, 10000000, 'PhotoProfil/2021-Formula1-Alpine-A521-005-1600.jpg'),
+(21, 'Layani', 'Antoine', 'antoine.layani@edu.ece.fr', 'ant', 'ant', '18 Rue Fondouze', 78018, 'Antony', 'France', '0636768949', NULL, 'Visa', '454654', 'ant', '09/29', 569, 500000, 'PhotoProfil/2014-Mercedes-Benz-SLS-AMG-Black-Series-009-1600.jpg');
 
 -- --------------------------------------------------------
 
@@ -193,13 +167,9 @@ CREATE TABLE IF NOT EXISTS `historique` (
 --
 
 INSERT INTO `historique` (`IdVente`, `IdClient`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Categorie`, `PrixDepart`, `PrixAchat`, `TypeAchat`, `Description`) VALUES
-(13, 4, 1, 'Montre Pepsi', 'PhotoItem/Pepsi.png', NULL, 'Unique', 16000, 17000, 'Negociation', 'Une gmt master 2 pepsi 2015 '),
-(36, 5, 2, 'collier diamant', 'PhotoItem/Bijou2.PNG', NULL, 'Unique', 44000, 120000, 'Immediat', 'Je souhaite changer de collier alors je vends celui la serti de diamants '),
-(45, 4, 6, 'Tableau Iron man', 'PhotoItem/Tableau1.PNG', NULL, 'Accessible', 400, 3300, 'Immediat', 'je vends ce tableau que j ai moi meme peint dans mon garage.'),
-(54, 19, 17, 'nissan gtr', 'PhotoItem/2020-Nissan-GT-R-50th-Anniversary-008-1600.jpg', NULL, 'Accessible', 1600, 16000, 'Immediat', 'belle voiture'),
-(55, 19, 17, 'alpine', 'PhotoItem/2023-Alpine-A110-R-003-1600.jpg', NULL, 'Collection', 1900, 19000, 'Immediat', 'alpine de collec'),
-(56, 19, 17, 'Polestar 1', 'PhotoItem/2020-Polestar-1-010-1600.jpg', NULL, 'Unique', 2000, 2006, 'Negociation', 'blanc'),
-(57, 19, 17, 'Singer Turbo', 'PhotoItem/2022-Singer-Turbo-Study-001-1600.jpg', NULL, 'Accessible', 1800, 3000, 'Negociation', 'pas une porsche');
+(55, 19, 17, 'Alpine A110 R', 'PhotoItem/2023-Alpine-A110-R-003-1600.jpg', NULL, 'Collection', 65000, 65000, 'Immediat', 'Alpine a dévoilé la A110 R, la version la plus légère et la plus extrême à ce jour. Il s\'agit d\'une révision complète de l\'A110 : la suspension, l\'échappement, la carrosserie et l\'aérodynamique ont été entièrement revus. Les nouvelles pièces en fibre de carbone telles que le capot, le couvre-moteur, l\'aileron arrière, le splitter avant et les roues sont légères et contribuent à générer plus de force d\'appui et moins de traînée qu\'auparavant.'),
+(56, 19, 17, 'Polestar 1', 'PhotoItem/2020-Polestar-1-010-1600.jpg', NULL, 'Accessible', 40000, 40006, 'Negociation', 'La marque de performance de Volvo, Polestar, crée de toutes nouvelles voitures GT hybrides de 600 chevaux à carrosserie en fibre de carbone. Le groupe motopropulseur hybride se compose d\'un quatre cylindres de 2,0 litres à la fois turbocompressé et suralimenté situé à l\'avant, et de deux moteurs électriques montés sur l\'essieu arrière qui entraînent les roues arrière. La Polestar 1 aura une autonomie d\'environ 160 km en mode tout électrique '),
+(57, 19, 17, 'Singer Turbo', 'PhotoItem/2022-Singer-Turbo-Study-001-1600.jpg', NULL, 'Unique', 180000, 300000, 'Negociation', 'Singer a dévoilé une 911 qui reprend à la fois la 930 originale et la 964 Turbo plus récente. Comme son nom l\'indique, elle est équipée d\'un moteur 6 cylindres à plat turbocompressé construit par Porsche Motorsport North America, d\'une puissance de base de 450 ch. Une boîte de vitesses manuelle à six rapports transmettra la puissance aux roues arrière, avec l\'option d\'une transmission intégrale.');
 
 -- --------------------------------------------------------
 
@@ -217,6 +187,13 @@ CREATE TABLE IF NOT EXISTS `negociation` (
   KEY `c3` (`IdVente`),
   KEY `c2` (`IdClient`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `negociation`
+--
+
+INSERT INTO `negociation` (`IdVente`, `IdClient`, `NbNego`, `PrixNego`) VALUES
+(58, 19, 0, 1505);
 
 -- --------------------------------------------------------
 
@@ -244,12 +221,6 @@ CREATE TABLE IF NOT EXISTS `vendeur` (
 --
 
 INSERT INTO `vendeur` (`IdVendeur`, `E-mail`, `Pseudo`, `MotDePasse`, `Photo`, `Nom`, `Prenom`, `Pays`, `Telephone`, `PorteMonnaie`) VALUES
-(1, 'homersimpson@edu.ece.fr', 'homer', 'simpson', 'PhotoProfil/homer.png', 'Simpson', 'Homer', 'USA', '0625032525', 0),
-(2, 'margesimpson@edu.ece.fr', 'marge', 'simpson', 'PhotoProfil/marge.png', 'Simpson', 'Marge', 'USA', '0625032526', 0),
-(5, 'james.bond@ece.fr', 'james', 'bond', 'PhotoProfil/James.PNG', 'Bond', 'James', 'Royaume_Uni', '0607080910', 0),
-(6, 'rickdelespace@ece.fr', 'rick', 'smith', 'PhotoProfil/Rick.PNG', 'Smith', 'Rick', 'Micronesie', '1234567891', 0),
-(7, 'handoftheking@ece.fr', 'tyrion', 'lannister', 'PhotoProfil/Tyrion.PNG', 'Lannister', 'Tyrion', 'Macedoine', '0804576819', 0),
-(8, 'onaletoile@om.fr', 'andre', 'villas', 'PhotoProfil/Villas.PNG', 'Villas Boas', 'AndrÃ©', 'Portugal', '0709193494', 0),
 (17, 'denisvalpro@gmail.com', 'vale', 'vale', 'PhotoProfil/2019-Formula1-Renault-RS19-001-1600.jpg', 'Valentin', 'Denis', 'Albanie', '0625851838', 0);
 
 -- --------------------------------------------------------
@@ -283,13 +254,13 @@ CREATE TABLE IF NOT EXISTS `vente` (
 --
 
 INSERT INTO `vente` (`IdVente`, `IdVendeur`, `Nom`, `Photo`, `Video`, `Description`, `Categorie`, `PrixDepart`, `PrixAchatImmediat`, `TypeVente`, `DateAjout`, `DateFin`, `Image2`, `Image3`) VALUES
-(58, 17, 'valentin', 'PhotoItem/2016-Ferrari-F12tdf-014-1600.jpg', NULL, 'dregfhsr', 'Accessible', 1500, 15000, 'Negociation', '2023-06-01', '2023-06-12', 'PhotoItem/', 'PhotoItem/'),
-(59, 17, 'porsche', 'PhotoItem/2023-Porsche-911-Sport-Classic-008-1600.jpg', NULL, 'porsche', 'Accessible', 1800, 18000, 'Negociation', '2023-06-01', '2023-06-12', 'PhotoItem/', 'PhotoItem/'),
-(60, 17, 'MclarenF1', 'PhotoItem/1998-McLaren-F1-008-1600.jpg', NULL, 'mclarenF1', 'Unique', 3000, 30000, 'Enchere', '2023-06-01', '2023-06-12', 'PhotoItem/', 'PhotoItem/'),
-(61, 17, 'F1Mclaren', 'PhotoItem/2021-Formula1-McLaren-MCL35M-011-1600.jpg', NULL, 'Formul1 de Norris', 'Unique', 5000, 50000, 'Enchere', '2023-06-01', '2023-06-12', 'PhotoItem/', 'PhotoItem/'),
-(62, 17, 'Mustang', 'PhotoItem/2024-Ford-Mustang-GT-002-1600.jpg', NULL, 'Mustang', 'Accessible', 1600, 16000, 'Negociation', '2023-06-01', '2023-06-12', 'PhotoItem/2024-Ford-Mustang-GT-002-1600.jpg', 'PhotoItem/'),
-(63, 17, 'AMGOne', 'PhotoItem/2023-Mercedes-AMG-ONE-008-1600.jpg', NULL, 'la plus radicale des AMG', 'Unique', 50000, 500000, 'Enchere', '2023-06-01', '2023-06-03', 'PhotoItem/2023-Mercedes-AMG-ONE-005-1600.jpg', 'PhotoItem/'),
-(64, 17, 'nissan gtr', 'PhotoItem/2020-Nissan-GT-R-50th-Anniversary-008-1600.jpg', NULL, 'gtr r35', 'Collection', 1900, 19000, 'Enchere', '2023-06-01', '2023-06-05', 'PhotoItem/2020-Nissan-GT-R-50th-Anniversary-009-1600.jpg', 'PhotoItem/2020-Nissan-GT-R-50th-Anniversary-005-1600.jpg');
+(58, 17, 'Ferrari F12tdf', 'PhotoItem/2016-Ferrari-F12tdf-014-1600.jpg', NULL, 'Le nom F12tdf rend hommage au Tour de France, course automobile qui s\'est déroulée entre 1899 et 1986 et qui a été régulièrement remportée par la Ferrari 250 entre 1956 et 1964.Il s\'agit de la version la plus dépouillée, ce qui signifie que le poids a été réduit de 110 kg grâce à l\'utilisation accrue de fibre de carbone, et que la puissance a été augmentée de 30 ch. ', 'Collection', 1500, 15000, 'Negociation', '2023-06-01', '2023-06-12', 'PhotoItem/2016-Ferrari-F12tdf-015-1600.jpg', 'PhotoItem/2016-Ferrari-F12tdf-012-1600.jpg'),
+(59, 17, 'Porsche 911 Sport Classic', 'PhotoItem/2023-Porsche-911-Sport-Classic-008-1600.jpg', NULL, 'La 911 Sport Classic à tirage limité associe le groupe motopropulseur de la Turbo S à une boîte de vitesses manuelle et à une transmission arrière. La 911 Turbo S n\'étant disponible qu\'en boîte automatique, cette édition spéciale est la seule occasion de profiter de la puissance du moteur 3,7 litres flat 6 biturbo avec une boîte manuelle à 7 rapports. Cette particularité, associée au design extérieur et aux matériaux intérieurs, fait de cette 911 l\'une des plus intrigantes depuis longtemps.', 'Accessible', 1800, 18000, 'Negociation', '2023-06-01', '2023-06-12', 'PhotoItem/2023-Porsche-911-Sport-Classic-007-1600.jpg', 'PhotoItem/2023-Porsche-911-Sport-Classic-010-1600.jpg'),
+(60, 17, 'MclarenF1', 'PhotoItem/1998-McLaren-F1-008-1600.jpg', NULL, 'La McLaren F1 est une voiture de sport conçue et fabriquée par Gordon Murray et McLaren Automotive. Le 31 mars 1998, elle a établi le record de la voiture de série la plus rapide au monde, avec une vitesse de 240 mph (391 km/h). Depuis avril 2009, trois voitures plus rapides ont succédé à la McLaren F1 en termes de vitesse de pointe, mais elle reste la voiture de série à moteur atmosphérique la plus rapide.', 'Collection', 3000, 30000, 'Negociation', '2023-06-01', '2023-06-12', 'PhotoItem/1998-McLaren-F1-012-1600.jpg', 'PhotoItem/1998-McLaren-F1-007-1600.jpg'),
+(61, 17, 'McLaren MCL35M', 'PhotoItem/2021-Formula1-McLaren-MCL35M-011-1600.jpg', NULL, 'Daniel Ricciardo rejoint l\'équipe pour 2021 aux côtés de Lando Norris. Avec Ricciardo, qui a déjà gagné des courses, et Lando, qui est un jeune pilote prometteur, McLaren a l\'air d\'avoir un duo solide qui devrait se pousser mutuellement à donner le meilleur de lui-même. L\'équipe ne rivalisera probablement pas directement avec Mercedes ou Red Bull en 2021, mais elle est en mesure de continuer à réduire l\'écart et de rester très compétitive dans un milieu de peloton très disputé.', 'Unique', 500000, 5000000, 'Enchere', '2023-06-01', '2023-06-12', 'PhotoItem/2021-Formula1-McLaren-MCL35M-012-1600.jpg', 'PhotoItem/2021-Formula1-McLaren-MCL35M-010-1600.jpg'),
+(62, 17, 'Ford Mustang Dark Horse', 'PhotoItem/2024-Ford-Mustang-GT-002-1600.jpg', NULL, 'Avec le lancement de la toute nouvelle Mustang, Ford a saisi l\'occasion de faire quelque chose de différent avec sa gamme. Le châssis reçoit des amortisseurs robustes à commande magnétique, des barres stabilisatrices arrière plus grandes, un différentiel arrière Torsen, des freins Brembo de 19 pouces à six pistons, des renforts légers et des jantes en fibre de carbone en option. Une boîte manuelle Tremac à six rapports est proposée de série pour gérer les plus de 500 ch du V8 Coyote de 5,0 L sous le capot.', 'Accessible', 1600, 16000, 'Negociation', '2023-06-01', '2023-06-12', 'PhotoItem/2024-Ford-Mustang-Dark-Horse-005-1600.jpg', 'PhotoItem/2024-Ford-Mustang-Dark-Horse-007-1600.jpg'),
+(63, 17, 'Mercedes-AMG ONE', 'PhotoItem/2023-Mercedes-AMG-ONE-008-1600.jpg', NULL, 'Le V6 peut monter en régime jusqu\'à 11 000 tr/min et produit 565 ch à lui seul, le décalage du turbo étant complètement éliminé par le moteur électrique MGU-H qui fait tourner la turbine. Connecté sur le côté du carter, le moteur électrique MGU-K apporte 160 ch au vilebrequin. Enfin, les deux moteurs électriques restants sont placés à l\'avant de la voiture, sur chaque essieu, ce qui en fait une transmission intégrale et permet d\'obtenir une puissance totale de 321 ch. La puissance totale du système est de 1 048 ch.', 'Unique', 50000, 500000, 'Enchere', '2023-06-01', '2023-06-03', 'PhotoItem/2023-Mercedes-AMG-ONE-005-1600.jpg', 'PhotoItem/2023-Mercedes-AMG-ONE-004-1600.jpg'),
+(64, 17, 'Nissan GT-R 50th Anniversary', 'PhotoItem/2020-Nissan-GT-R-50th-Anniversary-008-1600.jpg', NULL, 'Nissan célèbre les 50 ans de la première GT-R en proposant des couleurs extérieures bicolores spéciales, dont le bleu Bayside (Wangan), une couleur que l\'on n\'avait pas vue sur une GT-R depuis la génération R34. Trois combinaisons de couleurs différentes seront disponibles pour la GT-R 50e anniversaire, avec le bleu Bayside et des bandes blanches, le blanc nacré avec des bandes rouges et le super argent avec des bandes blanches. ', 'Collection', 7000, 70000, 'Negociation', '2023-06-01', '2023-06-05', 'PhotoItem/2020-Nissan-GT-R-50th-Anniversary-009-1600.jpg', 'PhotoItem/2020-Nissan-GT-R-50th-Anniversary-005-1600.jpg');
 
 --
 -- Contraintes pour les tables déchargées

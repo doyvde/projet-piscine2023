@@ -135,7 +135,7 @@
 
         <div class="row">
 
-            <div class="col-lg-8 mx-auto">
+            <!--<div class="col-lg-8 mx-auto">
                 <div class="card">
                     <h5 class="card-header">
                         <a class="btn btn-outline-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -201,7 +201,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
+            </div>-->
                 <br>
                 <!-- List group-->
                 <ul class="list-group shadow">
@@ -293,7 +293,7 @@
                                 
                                     $sqlVente = "SELECT * FROM Vente WHERE Description LIKE '%$search%' OR Nom LIKE '%$search%'";
                                     $sqlVente = triTC($sqlVente, $prixDepartMin, $prixDepartMax, $prixAchatImmediatMin, $prixAchatImmediatMax, $ordre, $type, $type2);
-                                    echo "<p>{$sqlVente}</p>";
+                                    //echo "<p>{$sqlVente}</p>";
                                     $resultVente = mysqli_query($db_handle, $sqlVente);
                                     if (mysqli_num_rows($resultVente) == 0) {
                                         echo "Aucune Vente pour cette categorie";

@@ -66,13 +66,17 @@ FOOBAR;
                         <div class="carousel-item">
                             <div class="row">';}}
                     else{
-                           echo'  <div class="col-md-4 mb-3">';
-                                    
-						    if($type == ""){afficheHistoNoClient($data);}else{afficheHistoClient($data);}
+					echo '  <div class="col-md-4 mb-3">';
+
+					if ($type == "") {
+						afficheHistoNoClient($data);
+					} else {
+						afficheHistoClient($data);
+					}
                             echo'     </div>';
                     }
-                        
-                       }echo'       </div>
+			}
+			echo '       </div>
                 </div>
             </div>
         </div>

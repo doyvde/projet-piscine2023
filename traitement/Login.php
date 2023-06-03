@@ -10,7 +10,7 @@ $type = isset($_POST["type"])? $_POST["type"] : "";
 //$database = "ebayece";
 
 //connectez-vous dans votre BDD
-list($db_found,$db_handle)=include "connexion_bdd.php";
+list($db_found,$db_handle)=include "connexion_bdd.php"; 
 include 'FinEnchere.php';
 
 if($type=="Client")
