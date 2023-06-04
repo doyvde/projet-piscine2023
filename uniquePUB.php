@@ -40,7 +40,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" style="color:black" href="viewAbout.php">À propos</a>
+                <a class="nav-link" style="color:black" href="viewAboutPUB.php">À propos</a>
             </li>
 
             <!-- <li class="nav-item">
