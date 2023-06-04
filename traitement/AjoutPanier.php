@@ -3,7 +3,7 @@
 
 function ajoutPanier($idClient, $idVente){
 	//identifier votre BDD
-	//$database = "ebayece";
+	//$database = " ";
 	$erreur=1;
 	//connectez-vous dans votre BDD
 	list($db_found,$db_handle)=include 'connexion_bdd.php';;

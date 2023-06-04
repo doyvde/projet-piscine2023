@@ -3,7 +3,7 @@
 //include 'connexion_bdd.php';
 function ajoutNego($prixNego, $idVente, $idClient){
 	//identifier votre BDD
-	//$database = "ebayece";
+	//$database = " ";
 	$finnego;
 
 	//connectez-vous dans votre BDD

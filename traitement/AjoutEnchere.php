@@ -5,7 +5,7 @@ function ajoutEnchere($prix, $idVente, $idClient){
 	//identifier votre BDD
 
 	$finenchere=0;
-	//$database = "ebayece";
+	//$database = " ";
 
 	//connectez-vous dans votre BDD
 	list($db_found,$db_handle)=include 'connexion_bdd.php';

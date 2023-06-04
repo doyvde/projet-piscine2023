@@ -50,7 +50,7 @@ function affichageCategorie($mode,$prixDepartMin,$prixDepartMax,$prixAchatImmedi
     
 
 	/*//identifier votre BDD
-	$database = "ebayece";
+	$database = " ";
 
 	//connectez-vous dans votre BDD
 	$db_handle = mysqli_connect('localhost', 'root','montretout1');

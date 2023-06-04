@@ -3,7 +3,7 @@
 function affichageMonCompte($type, $id){
 
 	//identifier votre BDD
-	//$database = "ebayece";
+	//$database = " ";
 
 	//connectez-vous dans votre BDD
 	list($db_found,$db_handle)=include 'connexion_bdd.php';

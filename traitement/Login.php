@@ -7,7 +7,7 @@ $mdp = isset($_POST["mdp"])? $_POST["mdp"] : "";
 $type = isset($_POST["type"])? $_POST["type"] : "";
 
 //identifier votre BDD
-//$database = "ebayece";
+//$database = " ";
 
 //connectez-vous dans votre BDD
 list($db_found,$db_handle)=include "connexion_bdd.php"; 

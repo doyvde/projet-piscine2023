@@ -17,7 +17,7 @@ function importer(){
 
 function inscrireVendeur($nom,$prenom,$tel,$email,$pays,$identifiant,$mdp,$image){
 	
-	//$database = "ebayece";
+	//$database = " ";
 
   	//connectez-vous dans votre BDD
 	list($db_found,$db_handle)=include 'traitement/connexion_bdd.php';

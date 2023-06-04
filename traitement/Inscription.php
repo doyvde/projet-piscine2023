@@ -16,7 +16,7 @@ function importer(){
 
 function inscrireClient ($nom,$prenom,$tel,$email,$adresse,$ville,$codePostal,$pays,$identifiant,$mdp,$typeCarte,$nomCarte,$numCarte,$dateExpi,$codeSecu,$porteMonnaie,$image){
 
-  //$database = "ebayece";
+  //$database = " ";
 
   //connectez-vous dans votre BDD
   list($db_found,$db_handle)=include 'connexion_bdd.php';

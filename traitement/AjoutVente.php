@@ -51,7 +51,7 @@ function vente($idVendeur,$nom,$description,$categorie,$prixDepart,$prixAchatImm
 
 function ajoutVente($idVendeur,$nom,$description,$categorie,$prixDepart,$prixAchatImmediat,$typeVente,$datefin,$photo,$image2,$image3){
 
-	//$database = "ebayece";
+	//$database = " ";
 
   //connectez-vous dans votre BDD
   	list($db_found,$db_handle)=include 'connexion_bdd.php';

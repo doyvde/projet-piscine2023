@@ -5,7 +5,7 @@
 function traitementNegocierVendeur($prixNego, $idVente, $idClient){
 	//identifier votre BDD
 
-	//$database = "ebayece";
+	//$database = " ";
 
 	//connectez-vous dans votre BDD
 	list($db_found,$db_handle)=include 'connexion_bdd.php';
@@ -40,7 +40,7 @@ function traitementNegocierVendeur($prixNego, $idVente, $idClient){
 function traitementNegocierClient($prixNego, $idVente, $idUser){
 	//identifier votre BDD
 
-	//$database = "ebayece";
+	//$database = " ";
 
 	//connectez-vous dans votre BDD
 	list($db_found,$db_handle)=include 'connexion_bdd.php';

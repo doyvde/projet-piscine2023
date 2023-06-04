@@ -32,7 +32,7 @@ function affichageCarou($type){
                                             <div class="row">
 FOOBAR;
 	//identifier votre BDD
-	//$database = "ebayece";
+	//$database = " ";
 
 	//connectez-vous dans votre BDD
     $i=1;

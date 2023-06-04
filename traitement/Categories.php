@@ -3,7 +3,7 @@
 function affichageCategorie($mode){
 
 	/*//identifier votre BDD
-	$database = "ebayece";
+	$database = " ";
 
 	//connectez-vous dans votre BDD
 	$db_handle = mysqli_connect('localhost', 'root','montretout1');
@@ -92,7 +92,7 @@ function afficheVente($data){
 function affichageNoCategorie($mode){
 
 	/*//identifier votre BDD
-	$database = "ebayece";
+	$database = " ";
 
 	//connectez-vous dans votre BDD
 	$db_handle = mysqli_connect('localhost', 'root','montretout1');
