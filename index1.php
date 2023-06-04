@@ -28,7 +28,7 @@
 				<br>
 				<br>
 				
-				<p class="d flex title justify-content-center text-center font-weight-bold" style="color:white;text-align:justify;"> Bienvenue sur Agora Francia<br> Les plus beaux articles vous attendent. <br>Connectez-vous ou créez votre compte.<br> </p>
+				<p class="d flex title justify-content-center text-center font-weight-bold" style="color:white;text-align:justify;"> Bienvenue sur Drive Deal<br> Les plus belles voitures vous attendent. <br>Connectez-vous ou créez votre compte.<br> </p>
 				<div class=" justify-content-center p-3" style="color:white;background-color:none" >
 
 
